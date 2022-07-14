@@ -1,0 +1,88 @@
+@import url("//db.onlinewebfonts.com/c/fda5368f2b6672d44e1d699ab34566b0?family=You're+Gone+V2");
+@import url("//db.onlinewebfonts.com/c/a8f1032f952b63eeefc647923900f21a?family=BauhausBuglerBoldW00-Bold");
+.demo{
+    font-family:"You're Gone V2" !important;
+    font-size:16px;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+*{
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+    
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* background-image:url(assets/img/bg.png);
+    background-position: center;
+    background-size: cover; */
+    z-index: -1;
+    background-color: rgba(200, 200, 200, 0.471);
+    
+    
+}
+.logo{
+    margin-top: -200px;
+    z-index: 2;
+    /* position: relative;
+    opacity: 0.8; */
+}
+
+.logo .demo{
+    position: absolute;
+    color: #fff;
+    transform :translate(-50%,-50%);
+    font-size: 5rem;
+}
+.logo .demo:nth-child(2){
+    color: transparent;
+    -webkit-text-stroke:2px  rgba(102,104,108,255);
+}
+
+.logo .demo:nth-child(3){
+    color: rgba(102,104,108,255);
+
+    animation: animate 1s ease-in-out infinite;
+}
+
+@keyframes animate
+{
+    0%,100%{
+        clip-path: polygon(0 45%, 15% 44%, 32% 50%, 54% 60%, 70% 61%, 84% 59%, 100% 52%, 100% 100%, 0% 100%);
+
+    }
+    50%{
+        clip-path: polygon(0 60%, 16% 65%, 34% 66%, 51% 62%, 67% 50%, 84% 45%, 100% 46%, 100% 100%, 0% 100%);
+
+    }
+}
+
+.logo .p{
+    font-family:"You're Gone V2" !important;
+    font-size: 5rem;
+    margin-left: -175%;
+    background: linear-gradient(to right,#330867 0% ,#30CFD0 100% );
+    
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.logo .ok{
+    font-family: "BauhausBuglerBoldW00-Bold" !important;
+    font-size: 2rem;
+    position: absolute;
+    background: linear-gradient(to right,#330867 0% ,#30CFD0 100% );
+    
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+    transform :translate(-50%,-50%);
+    margin-top: 45px;
+    margin-left: 90px  ;
+}

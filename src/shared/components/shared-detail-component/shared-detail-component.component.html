@@ -1,0 +1,119 @@
+<div class="col-md-8">
+    <div class="card  card-tasks">
+      <div class="card-header ">
+        
+        <h4 class="card-title">Task detail</h4>
+        <!-- <h5 class="card-category" style="color: rgb(255, 0, 30);" >task detail</h5> -->
+      </div>
+     
+        <div class="card-header">
+       <!-- <h5 class="card-category">demande  de conge</h5> -->
+            <div class="d-flex justify-content-between" >
+              <!-- <h4 class="card-title " style="font-size: 15px ;">Role Details</h4> -->
+<!--      
+              <td class="text-right">
+  
+                <span   class="badge badge" style="color: #ff3636;cursor: pointer;" >close..</span>
+  
+            </td> -->
+              </div>
+            </div>
+        <div class="card-body">
+       
+            <div *ngIf="initloading" class="d-flex justify-content-center" >
+              <div class="spinner-border" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+          </div>
+        
+      
+ 
+            <div class="row" >
+             <div class="col-md-6">    
+            <label>dateDebut:</label>
+           <span _ngcontent-c2="" class="badge badge-default">     {{demande.dateDebut}} le {{demande.dateDebutPlusDetaile}}</span>
+            </div>
+              
+            
+        </div>
+        
+        <div class="row" >
+          <div class="col-md-6">    
+         <label>dateFin:</label>
+        <span _ngcontent-c2="" class="badge badge-default">  {{demande.dateFin}} le {{demande.dateFinPlusDetaile}}</span>
+         </div>
+           
+        </div>
+        <div class="row" >
+          <div class="col-md-6">    
+         <label>type:</label>
+        <span class="badge badge-info " style="border-radius: 45px;" >{{demande.owner.nom}} {{demande.owner.prenom}} </span>
+      
+         </div>
+           
+     </div>
+     <div class="row" >
+        <div class="col-md-6">    
+       <label>typeConge:</label>
+      <span class="badge badge-info " style="border-radius: 45px;" >{{demande.typeConge}} </span>
+    
+       </div>
+         
+   </div>
+     <div class="row" >
+        <div class="col-md-6">    
+       <label>duree:</label>
+      <span _ngcontent-c2="" class="badge badge-default">  {{demande.duree}} jours</span>
+       </div>
+         
+      </div>
+     <div class="row" *ngIf="demande.traitement1.etats!=null" >
+      <div class="col-md-12">    
+     <label>traitement1:</label>
+     
+     <div *ngIf="demande.traitement1.etats=='encours'">
+        <span  class="badge badge-warning " style="border-radius: 45px; background-color: gray;" >{{demande.traitement1.etats}} </span>
+      </div>
+      <div *ngIf="demande.traitement1.etats=='accepted'">
+          <span  class="badge badge-success " style="border-radius: 45px;" >{{demande.traitement1.etats}} by {{demande.traitement1.by}}</span>
+        </div>
+        <div *ngIf="demande.traitement1.etats=='refused'">
+          <span  class="badge badge-danger " style="border-radius: 45px;" >{{demande.traitement1.etats}} by {{demande.traitement1.by}}</span>
+        </div>
+  
+     </div>
+       
+ </div>
+ <div class="row"  *ngIf="demande.traitement2.etats!=null">
+    <div class="col-md-12">    
+   <label>traitement2:</label>
+   
+   <div *ngIf="demande.traitement2.etats=='encours'">
+    <span  class="badge badge-warning " style="border-radius: 45px;background-color: gray;" >{{demande.traitement2.etats}} </span>
+  </div>
+  <div *ngIf="demande.traitement2.etats=='accepted'">
+      <span  class="badge badge-success " style="border-radius: 45px;" >{{demande.traitement2.etats}} by {{demande.traitement2.by}}</span>
+    </div>
+    <div *ngIf="demande.traitement2.etats=='refused'">
+      <span  class="badge badge-danger " style="border-radius: 45px;" >{{demande.traitement2.etats}} by {{demande.traitement2.by}}</span>
+    </div>
+   </div>
+     
+</div>
+        
+<div class="row" >
+    <div class="col-md-6">    
+   <label>justification:</label>
+   <span _ngcontent-c2="" class="badge badge-default">   {{demande.justification}}  </span>
+
+   </div>
+     
+</div>
+        
+
+       
+    
+      </div>
+   
+    </div>
+  </div>
