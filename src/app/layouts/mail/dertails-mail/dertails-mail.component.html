@@ -1,0 +1,261 @@
+<link rel="stylesheet" href="//cdn.materialdesignicons.com/3.7.95/css/materialdesignicons.min.css">
+<div class="main-content">
+
+
+    <div class="row">
+<div class="col-md-12">
+          <div class="email-wrapper wrapper">
+            <div class="row align-items-stretch"> 
+              <div class="mail-view d-none d-md-block col-md-12 col-lg-12 bg-white">
+                <div class="row">
+                  <div class="col-md-12 mb-4 mt-4">
+                    <div class="btn-toolbar">
+                      <div class="btn-group" >
+                        <button *ngIf="oneMail.status=='nontraiter'" class="btn btn-info" (click)="affichetr()">commencer le traitement</button>
+                        &nbsp;
+                        &nbsp;
+                        <button *ngIf="oneMail.status=='encours' || oneMail.status=='traiter'" (click)="afficherdetailstr()" class="btn btn-warning">Details de traitement</button>
+                               
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="message-body">
+                  <div class="sender-details">
+                    <img class="img-sm rounded-circle mr-3" src="../../../../assets/img/send_email_user_alternative.png" style="border:rounded;height: 10%;width: 10%;"  alt="">
+                    <div class="details">
+                      <p class="msg-subject">
+                        Weekly Update - Week 19 (May 8, 2017 - May 14, 2017)
+                      </p>
+                      <p class="sender-email">
+                        
+                        <a href="#">{{oneMail.senderAddress}}</a>
+                        &nbsp;
+                      </p>
+                    </div>
+                  </div>
+                  <div class="message-content">
+                    <p>{{oneMail.subject}}</p>
+                    <p>{{oneMail.cc}}</p>
+                  </div>
+                  <div class="attachments-sections col-md-3">
+                    <ul >
+                      <li *ngFor="let att of oneMail.attachments">
+                        <div class="thumb"><i class="mdi mdi-file-pdf"></i></div>
+                        <div class="details">
+                          <p class="file-name"></p>
+                          <div class="buttons">
+                            <!-- <p class="file-size">678Kb</p> -->
+                            <!-- <a href="#" class="view">View</a> -->
+                            <a (click)="downloadpf()" class="download">View</a>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>    
+      
+      <div *ngIf="showdettr" class="col-md-8">
+        <br>
+        <br>
+        <div class="card ">
+          <div class="card-body">
+            <h4 class="card-title">traitement Rh</h4>
+            <h5 *ngIf="oneMail.tr1" class="card-text"><strong>Note: &nbsp;</strong>{{oneMail.tr1.generatedby}}</h5>    
+            <h5 *ngIf="oneMail.tr1" class="card-text"><strong>Note: &nbsp;</strong>{{oneMail.tr1.note}}</h5>
+              <span  *ngIf="oneMail.tr1 &&oneMail.tr1.etat=='refuser'"class="badge badge-danger" >Refuser</span>
+              <span *ngIf="oneMail.tr1 && oneMail.tr1.etat=='encours'" class="badge badge-info" >encours</span>
+              <span  *ngIf="oneMail.tr1 &&oneMail.tr1.etat=='accepter'" class="badge badge-success" >Accepter</span>
+          </div>
+        </div>
+        <br>
+        <br>
+         <div class="card col-md-12">
+            <div class="card-body" *ngIf="oneMail.tr2!=null">
+               <h4 class="card-title">Traitement technique</h4>
+                  <h5  *ngIf="oneMail.tr2" class="card-text"> <strong>Gerer Par: &nbsp;</strong> {{oneMail.tr2.generatedby}}</h5> 
+                  <h5 *ngIf="oneMail.tr2" class="card-text"><strong>Note: &nbsp;</strong>{{oneMail.tr2.note}}</h5>
+            <span *ngIf="oneMail.tr2 && oneMail.tr2.etat=='refuser'"class="badge badge-danger" >Refuser</span>
+            <span *ngIf="oneMail.tr2 && oneMail.tr2.etat=='encours'" class="badge badge-info" >encours</span>
+            <span  *ngIf="oneMail.tr2 && oneMail.tr2.etat=='accepter'" class="badge badge-success" >Accepter</span>
+          </div> 
+          <div class="card col-md-12">
+            <div class="card-body" *ngIf="oneMail.tr3!=null">
+               <h4 class="card-title">Traitement directeur Rh</h4>
+                  <h5  *ngIf="oneMail.tr2" class="card-text"> <strong>Gerer Par: &nbsp;</strong> {{oneMail.tr3.generatedby}}</h5> 
+                  <h5 *ngIf="oneMail.tr2" class="card-text"><strong>Note: &nbsp;</strong>{{oneMail.tr3.note}}</h5>
+            <span *ngIf="oneMail.tr2 && oneMail.tr2.etat=='refuser'"class="badge badge-danger" >Refuser</span>
+            <span *ngIf="oneMail.tr2 && oneMail.tr2.etat=='encours'" class="badge badge-info" >encours</span>
+            <span  *ngIf="oneMail.tr2 && oneMail.tr2.etat=='accepter'" class="badge badge-success" >Accepter</span>
+          </div> 
+          
+              <div class="card card-user" *ngIf="oneMail.tr2==null && testrole==true">
+                <div class="image">
+                  <img src="../../../../assets/img/enttecg.jpg" style="width:100%;" alt="...">
+                </div>
+                <div class="card-body">
+                  <div class="author">
+                 <br>
+                 <br>
+                 <br>         
+                  </div>
+                  <br>
+                  <br>
+                  <br>
+                  <div class="col-md-12 pr-1">
+                    <h3>Traitement Technique</h3>
+    
+                    <div class="form-group">
+                      <label> Note</label>
+                      <textarea [(ngModel)]="note"
+                      class="form-control" style="border:1px solid grey;border-radius: 5px;" id="exampleFormControlTextarea1" rows="6"></textarea>
+                    </div>
+                  </div>
+          
+           {{note}}
+          {{etat}} 
+                  <div class="col-md-12 pr-1">
+                      <div class="form-group">
+                        <label>Etat</label>
+                     <select   [(ngModel)]="etat" name="dropdownOption" id="dropdownOption" class='form-control'>       
+                      <option value="accepter">Accepter</option>
+                      <option value="refuser">Refuser</option>
+          
+                      </select>
+                  </div>
+                 
+                  </div>
+                </div>
+                <hr>
+                <div class="button-container">
+                  <button href="#" class="btn btn-primary" (click)="accpetedTechTr()">
+                    accepter
+                </button>
+                <button href="#" class="btn btn-danger" (click)="refusedTechTr()">
+                    refuser
+                </button>
+                </div>
+              </div>
+           
+            
+
+
+        </div>
+      </div> 
+      
+      <div *ngIf="showtr" class="col-md-12"  style="margin-top:-300px ;"><br>
+      <br>
+          <div class="card card-user">
+            <div class="image">
+              <img src="../../../../assets/img/traitement1.PNG" style="width:100%;" alt="...">
+            </div>
+            <div class="card-body">
+              <div class="author">
+             <br><br> <br>         
+              </div>
+              <br><br><br>
+              <div class="col-md-12 pr-1">
+                <h3>Traitement Rh</h3>
+                <div class="form-group">
+                  <label> Note</label>
+                  <textarea [(ngModel)]="note"
+                  class="form-control" style="border:1px solid grey;border-radius: 5px;" id="exampleFormControlTextarea1" rows="6"></textarea>
+                </div>
+              </div>
+      
+       {{note}}
+      {{etat}} 
+      {{userName}}
+              <div class="col-md-12 pr-1">
+                  <div class="form-group">
+                    <label>Etat</label>
+                 <select   [(ngModel)]="etat" name="dropdownOption" id="dropdownOption" class='form-control'>       
+                  <option value="accepter">Accepter</option>
+                  <option value="refuser">Refuser</option>
+      
+                  </select>
+              </div>
+              <div class="form-group">
+                <label  >tech liste</label>
+             <select [(ngModel)]="userName" name="dropdownOption" id="dropdownOption" class='form-control'>       
+              <option *ngFor="let tu of listusertech">{{tu.userName}}</option>
+              
+              </select>
+          </div>
+              </div>
+            </div>
+            <hr>
+            <div class="button-container">
+              <button href="#" class="btn btn-primary" (click)="accpettr()">
+                accepter
+            </button>
+            <button href="#" class="btn btn-danger" (click)="refusertr()">
+                refuser
+            </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="showtr" class="col-md-12"  style="margin-top:-300px ;"><br>
+        <br>
+            <div class="card card-user">
+              <div class="image">
+                <img src="../../../../assets/img/traitement1.PNG" style="width:100%;" alt="...">
+              </div>
+              <div class="card-body">
+                <div class="author">
+               <br><br> <br>         
+                </div>
+                <br><br><br>
+                <div class="col-md-12 pr-1">
+                  <h3>Traitement DRh</h3>
+                  <div class="form-group">
+                    <label> Note</label>
+                    <textarea [(ngModel)]="note"
+                    class="form-control" style="border:1px solid grey;border-radius: 5px;" id="exampleFormControlTextarea1" rows="6"></textarea>
+                  </div>
+                </div>
+         {{note}}{{etat}} 
+                <div class="col-md-12 pr-1">
+                    <div class="form-group">
+                      <label>Etat</label>
+                   <select   [(ngModel)]="etat" name="dropdownOption" id="dropdownOption" class='form-control'>       
+                    <option value="accepter">Accepter</option>
+                    <option value="refuser">Refuser</option>
+                    </select>
+                </div>
+                </div>
+              </div>
+              <hr>
+              <div class="button-container">
+                <button href="#" class="btn btn-primary" (click)="accpettr()">
+                  accepter
+              </button>
+              <button href="#" class="btn btn-danger" (click)="refusertr()">
+                  refuser
+              </button>
+              </div>
+            </div>
+          </div>
+        
+      
+        
+        <br>
+  <br>
+  <br><br>
+    <button class="btn">Default</button>
+    <button class="btn btn-primary">Primary</button>
+    <button class="btn btn-info">Info</button>
+    <button class="btn btn-success">Success</button>
+    <button class="btn btn-warning">Warning</button>
+    <button class="btn btn-danger">Danger</button>
+    <button class="btn btn-neutral">Neutral</button>
+
+    
+  

@@ -1,3 +1,4 @@
+import { MailComponent } from './mail/mail.component';
 import { NgModule } from '@angular/core';
 import {DragDropModule} from '@angular/cdk/drag-drop'
 import { RouterModule } from '@angular/router';
@@ -18,7 +19,6 @@ import { RoleComponent } from './role/role.component';
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
     ChartsModule,
-    NgbModule,
     ToastrModule.forRoot(),
     ReactiveFormsModule,
     HttpClientModule,
@@ -28,7 +28,8 @@ import { RoleComponent } from './role/role.component';
   declarations: [
     DashboardComponent,
     UsersComponent,
-    RoleComponent
+    RoleComponent,
+    MailComponent
   ]
 })
 

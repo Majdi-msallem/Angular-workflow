@@ -15,6 +15,9 @@ import { LoginComponent } from './login/login.component';
 import { ComponentsModule } from 'shared/components/components.module';
 import {MatSelectModule} from '@angular/material/select';
 import { PageComponent } from './Page/page.component';
+import { AuthGuard } from 'shared/guard/auth.guard';
+import { AuthInterceptor } from 'shared/guard/auth.interceptor';
+import { UserService } from 'shared/service/user.service';
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -23,10 +26,12 @@ import { PageComponent } from './Page/page.component';
     HttpClientModule,
     RouterModule,
     AppRoutingModule,
-    NgbModule,
     ToastrModule.forRoot(),
     ComponentsModule,
-    MatSelectModule
+    MatSelectModule,
+    NgbModule,
+
+
     
   ],
   declarations: [
@@ -37,7 +42,13 @@ import { PageComponent } from './Page/page.component';
 
   ],
   providers: [
-  
+    AuthGuard,
+    {
+        provide: HTTP_INTERCEPTORS,
+        useClass:AuthInterceptor,
+        multi:true
+    },
+    UserService
     ],
   bootstrap: [AppComponent]
 })

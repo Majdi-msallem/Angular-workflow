@@ -1,0 +1,55 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title"> Mail traiter</h4>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class=" text-primary">
+                <th>
+                  sujet
+                </th>
+                <th>
+                  adresse email
+                </th>
+                <th>
+                  Contenu
+                </th>
+                <th>
+                  Traitement RH 
+                </th>
+                <th>
+                  Traitement Tech
+                </th>
+                
+              </thead>
+              <tbody *ngFor="let mt of mailtraiter">
+                <tr>
+                  <td>
+                    {{mt.subject}}
+                  </td>
+                  <td>
+                    {{mt.senderAddress}}
+                  </td>
+                  <td>
+                    {{mt.cc}}
+                  </td>
+                  <td>
+                    {{mt.tr1.generatedby}}
+                  </td>
+                  <td>
+                    {{mt?.tr2?.generatedby}}
+                  </td>
+                </tr>
+               
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>

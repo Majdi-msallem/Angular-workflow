@@ -1,1 +1,90 @@
-<p>add-user works!</p>
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="title">Ajouter Nouveau utilisateur</h5>
+        </div>
+        <div class="card-body">
+          <form  [formGroup]="userForm">
+            <div class="row">
+             
+              <div class="col-md-3 px-1">
+                <div class="form-group">
+                  <label>userName</label>
+                  <input type="text" 
+                  formControlName="userName" 
+                  class="form-control" placeholder="nom du role " value="">
+                </div>
+              </div>
+              <div class="col-md-3 px-1">
+                <div class="form-group">
+                  <label>userFName</label>
+                  <input type="text" 
+                  formControlName="userFName" 
+                  class="form-control" placeholder="nom du role " value="">
+                </div>
+              </div>
+              <div class="col-md-3 px-1">
+                <div class="form-group">
+                  <label>userLName</label>
+                  <input type="text" class="form-control"
+                  formControlName="userLName" 
+                   placeholder="nom du role " value="">
+                </div>
+              </div>
+              <div class="col-md-3 px-1">
+                <div class="form-group">
+                  <label>email</label>
+                  <input type="text"
+                  formControlName="email"
+                  class="form-control" placeholder="nom du role " value="">
+                </div>
+              </div>
+              <div class="col-md-3 px-1">
+                <div class="form-group">
+                  <label>Password</label>
+                  <input type="text"
+                  formControlName="password" 
+                  class="form-control" placeholder="nom du role " value="">
+                </div>
+              </div>
+              <div class="col-6 " >
+                <label>Role</label>
+                <ng-multiselect-dropdown 
+                [placeholder]="'choisir role'"
+                [settings]="dropdownSettings"
+                [data]="Listrole"
+                formControlName="role"        >
+                </ng-multiselect-dropdown>
+          
+            </div>
+              
+            </div>
+           
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                </div>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <textarea rows="4" cols="80" class="form-control" placeholder="" value="Mike"></textarea>
+                </div>
+              </div>
+            </div>
+            <button (click)="addUser()"  class="btn btn-primary right">Ajouetr</button>
+          </form>
+        </div>
+      </div>
+    </div>
+   
+
+
+  </div>
+</div>

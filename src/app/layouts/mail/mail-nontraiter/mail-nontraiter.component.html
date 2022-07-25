@@ -1,0 +1,42 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-10">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title"> Mails non traiter</h4>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class=" text-primary">
+                <th>
+                  Sujet
+                </th>
+                <th>
+                  Adress email
+                </th>
+                <th>
+                  Cc
+                </th>
+                
+              </thead>
+              <tbody *ngFor="let mn of mailNontraiter ">
+                <tr>
+                  <td>
+                    {{mn.subject}}
+                  </td>
+                  <td>
+                    {{mn.senderAddress}}
+                  </td>
+                  <td>
+                    {{mn.cc}}
+                  </td>           
+                </tr>                        
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>

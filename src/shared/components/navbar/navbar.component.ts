@@ -2,6 +2,8 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { ROUTES } from '../sidebar/sidebar.component';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 import { Router } from '@angular/router';
+import { UserAuthService } from 'shared/service/user-auth.service';
+import { UserService } from 'shared/service/user.service';
 // import Chart from 'chart.js';
 
 
@@ -19,7 +21,13 @@ export class NavbarComponent implements OnInit {
 
     public isCollapsed = true;
 
-    constructor(location: Location,  private element: ElementRef) {
+    constructor(
+      location: Location,  
+      private element: ElementRef,
+      private userAuthService:UserAuthService,
+      private Router:Router,
+      public userService:UserService
+      ) {
       this.location = location;
           this.sidebarVisible = false;
     }
@@ -148,8 +156,17 @@ export class NavbarComponent implements OnInit {
     }
 
 
-    logout(){
-
-    
+    public isLoggedIn(){
+      return this.userAuthService.isLoggedIn();
     }
+    
+  
+    public logout(){
+      this.userAuthService.clear();
+      this.Router.navigate(['/login'])
+    }
+    public profil(){
+      this.Router.navigate(['/admin/user/profil-u'])
+    }
+  
 }

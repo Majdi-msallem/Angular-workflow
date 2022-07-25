@@ -1,0 +1,53 @@
+
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="title">Ajouter Nouveau Role</h5>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="formValue">
+            <div class="row">
+             
+              <div class="col-md-3 px-1">
+                <div class="form-group">
+                  <label>Nom du role</label>
+                  <input type="text" 
+                  formControlName="roleName"
+                  class="form-control" placeholder="nom du role " value="">
+                </div>
+              </div>
+              
+            </div>
+           
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label>Description de role</label>
+                  <input type="text" 
+                  formControlName="roleDescription"
+                  class="form-control" placeholder="description de role....." value="">
+                </div>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <textarea rows="4" cols="80" class="form-control" placeholder="" value="Mike"></textarea>
+                </div>
+              </div>
+            </div>
+            <button type="button" (click)="ajouterNouveauRole()"   class="btn btn-primary right">Ajouetr</button>
+          </form>
+        </div>
+      </div>
+    </div>
+   
+
+
+  </div>
+</div>

@@ -1,0 +1,62 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title"> Liste des utlisateurs</h4>
+        </div>
+        <div class="card-body" >
+          <div class="table-responsive">
+            <table class="table" >
+              <thead class=" text-primary">
+                <th class="text-left">
+                  Nom
+                </th>
+                <th class="text-left">
+                  Prenom
+                </th>
+                <th class="text-left">
+                  Nom utilisateur
+                </th>
+                <th class="text-left">
+                  Email
+                </th>
+                <th class="text-left">
+                  Role
+                </th>
+                <th>
+                  Action
+                </th>
+              </thead>
+              <tbody>
+                <tr *ngFor="let user of allusers">
+                  <td>
+                  {{user.userFName}}
+                  </td>
+                  <td>
+                    {{user.userLName}}                  
+                  </td>
+                  <td>
+                    {{user.userName}}
+                  </td>
+                  <td>
+                    {{user.email}}
+                  </td>
+                  <td >
+                    {{user.userName}}
+                  </td>
+                  <td>
+                    <button class="btn btn-warning "><i class="now-ui-icons ui-1_settings-gear-63"></i></button> &nbsp;
+                    <button class="btn btn-danger "><i class="now-ui-icons ui-1_simple-remove"></i></button>
+                   
+                    
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>

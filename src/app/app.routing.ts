@@ -6,6 +6,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout.component';
 import { LoginComponent } from './login/login.component';
 import { NotfoundComponent } from 'shared/components/notfound/notfound.component';
 import { PageComponent } from './Page/page.component';
+import { AuthGuard } from 'shared/guard/auth.guard';
 
 const routes: Routes =[
   {
@@ -25,6 +26,7 @@ const routes: Routes =[
         {
       path: '',
       loadChildren: () => import('./layouts/admin-layout.module').then(x=>x.AdminLayoutModule),
+      canActivate:[AuthGuard]
   }]},
   
   {
@@ -34,6 +36,7 @@ const routes: Routes =[
         {
       path: '',
       loadChildren: () => import('./Page/page.module').then(x=>x.PageModule),
+
   }]},
  
   {

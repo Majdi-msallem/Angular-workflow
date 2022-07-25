@@ -1,0 +1,51 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title"> liste des mails traiter techniquement:</h4>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class=" text-primary">
+                <th>
+                  generer par
+                </th>
+                <th>
+                  Note
+                </th>
+                <th>
+                  AdressEmail
+                </th>
+                <th>
+                  Sujet
+                </th>
+                
+              </thead>
+              <tbody >
+                <tr (click)="DetailsMail(lm.idMail)" *ngFor="let lm of mailForTech "> 
+                  <td>
+                    {{lm?.tr1?.generatedby}}
+                  </td>
+                  <td>
+                    {{lm?.tr1?.note}}
+                  </td>
+                  <td>
+                    {{lm?.senderAddress}}
+                  </td>
+                  <td>
+                    {{lm?.subject}}
+                  </td>
+                  
+                </tr>
+               
+               
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>

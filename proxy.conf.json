@@ -1,6 +1,6 @@
 {
 "/api/*": {
-"target": "http://localhost:8081/workflow/",
+"target": "http://localhost:8090/",
 "secure": false,
 "logLevel": "debug",
 "changeOrigin": true,
