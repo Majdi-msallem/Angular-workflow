@@ -23,14 +23,18 @@ export const ROUTES: RouteInfo[] = [
       {path:'/admin/mail/list-mnt', title:'Mails Non traiter', icon:'ui-1_settings-gear-63', class: '',roleName:["rh","d_rh"]},
       {path:'/admin/mail/list-mc', title:'Mails encours', icon:'arrows-1_refresh-69',class: '',roleName:["rh","d_rh"]},
       {path:'/admin/mail/list-mt', title:'Mails Traiter', icon:'ui-1_check', class: '',roleName:["rh","d_rh"]},
+      //liste mails tr1 & tr2
+      {path:'/admin/mail/list-tr1', title:'Traitement Rh', icon:'ui-1_email-85', class: '',roleName:["rh","d_rh"]},
+      {path:'/admin/mail/list-tr2', title:'Traitement Tech', icon:'tech_laptop', class: '',roleName:["rh","d_rh"]},
 
-    //traitement 
-    {path:'/admin/mail/first-tr', title:'Traitement Rh', icon:'business_badge', class: '',roleName:["rh","d_rh"]},
-    {path:'/admin/mail/second-tr', title:'Traitement technique', icon:'tech_laptop', class: '',roleName:["tech","d_rh"]},
+
+
+    //traitement for Role tech & rh 
+    {path:'/admin/mail/listMailsForRHconnected', title:'Mes traitement', icon:'business_badge', class: '',roleName:["rh"]},
+    {path:'/admin/mail/listMailsForTechconnected', title:'Mes traitements', icon:'tech_laptop', class: '',roleName:["tech"]},
 
     //role
       { path: '/admin/role/list-r', title: 'Liste Role',  icon:'design_bullet-list-67', class: '',roleName:["d_rh"] },
-    //user tech
 
     
 

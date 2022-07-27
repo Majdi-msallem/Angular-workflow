@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
          }else if (role =='rh'){
           this.router.navigate(['/admin/mail'])
          }else if(role=='tech'){
-          this.router.navigate(['/admin/mail/second-tr'])
+          this.router.navigate(['/admin/mail/listMailsForTechconnected'])
          }
        }else{
         //this.router.navigate(['/admin/dashboard'])

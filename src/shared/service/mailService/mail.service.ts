@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'environments/environment';
 import { Observable } from 'rxjs';
@@ -14,8 +14,12 @@ export class MailService {
 
 
 
-  AllMail(): Observable<mailModel[]> { 
-    return this.http.get<mailModel[]>( this.url+"/getAllMail");
+  AllMail(o:any): Observable<mailModel[]> { 
+    const params = new HttpParams()
+    .set('page', o.page)
+    .set('size', o.size)
+    .set('recherche', o.recherche)
+    return this.http.get<mailModel[]>( this.url+"/getAllMail",{params});
   }
   GetMailById(id:number): Observable<mailModel>{
     return this.http.get<mailModel>(this.url+"/getMailById/"+id)
@@ -31,5 +35,8 @@ export class MailService {
   }
   Mailstraiter(){
     return this.http.get(this.url+"/mailstraiter");
+  }
+  listeMailTR1BYUserConnected():Observable<mailModel[]>{
+    return this.http.get<mailModel[]>(this.url+"/listeMailsGeneratedByName");
   }
 }

@@ -12,7 +12,7 @@
             <table class="table">
               <thead class=" text-primary">
                 <th>
-                  generer par
+                  Traitement Rh
                 </th>
                 <th>
                   Note
@@ -22,6 +22,9 @@
                 </th>
                 <th>
                   Sujet
+                </th>
+                <th>
+                  etat
                 </th>
                 
               </thead>
@@ -39,7 +42,15 @@
                   <td>
                     {{lm?.subject}}
                   </td>
-                  
+                   <td *ngIf="lm?.tr2?.etat==null">
+                    <span class="badge badge-warning"> non traiter </span>
+                  </td>
+                  <td *ngIf="lm?.tr2?.etat!=null && lm?.tr2?.etat== 'accepter' ">
+                    <span class="badge badge-success"> accepter </span>
+                  </td>
+                  <td *ngIf="lm?.tr2?.etat!=null && lm?.tr2?.etat== 'refuser' ">
+                    <span class="badge badge-danger"> refuser </span>
+                  </td>
                 </tr>
                
                

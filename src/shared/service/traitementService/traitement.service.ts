@@ -40,4 +40,12 @@ export class TraitementService {
   accpetedTechTr(idMail:any,note:any,etat:any){
     return this.httpclient.get(this.url+'/process/tr2/'+ idMail+'/'+note+'/'+etat);
   }
+
+  //liste des traitement tech& rh 
+  listTR1(){
+    return this.httpclient.get(this.url+'/tr1')
+  }
+  listTR2(){
+    return this.httpclient.get(this.url+'/tr2')
+  }
 }

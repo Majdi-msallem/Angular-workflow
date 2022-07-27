@@ -5,48 +5,55 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title"> liste des mails traiter par RH:</h4>
+          <h4 class="card-title"> liste des mails traiter techniquement:</h4>
         </div>
         <div class="card-body">
           <div class="table-responsive">
             <table class="table">
               <thead class=" text-primary">
                 <th>
-                  Adress Email
-                </th>
-                <th>
-                  Sujet
+                  Traitement RH
                 </th>
                 <th>
                   Note
+                </th>
+                <th>
+                  AdressEmail
+                </th>
+                <th>
+                  Sujet
                 </th>
                 <th>
                   etat
                 </th>
                 
               </thead>
-              <tbody>
-                <tr (click)="DetailsMail(lm.idMail)" *ngFor="let lm of mailsrh "> 
+              <tbody >
+                <tr (click)="DetailsMail(lm.idMail)" *ngFor="let lm of allt1 "> 
                   <td>
-                    {{lm.senderAddress}}
+                    {{lm?.tr1?.generatedby}}
                   </td>
                   <td>
-                    {{lm.subject}}
+                    {{lm?.tr1?.note}}
                   </td>
                   <td>
-                    {{lm?.tr1.note}}
+                    {{lm?.senderAddress}}
                   </td>
-                   <td *ngIf="lm?.tr1?.etat==null">
+                  <td>
+                    {{lm?.subject}}
+                  </td>
+                   <td *ngIf="lm?.tr2?.etat==null">
                     <span class="badge badge-warning"> non traiter </span>
                   </td>
-                  <td *ngIf="lm?.tr1?.etat!=null && lm?.tr1?.etat== 'accepter' ">
+                  <td *ngIf="lm?.tr2?.etat!=null && lm?.tr2?.etat== 'accepter' ">
                     <span class="badge badge-success"> accepter </span>
                   </td>
-                  <td *ngIf="lm?.tr1?.etat!=null && lm?.tr1?.etat== 'refuser' ">
+                  <td *ngIf="lm?.tr2?.etat!=null && lm?.tr2?.etat== 'refuser' ">
                     <span class="badge badge-danger"> refuser </span>
                   </td>
                 </tr>
-
+               
+               
               </tbody>
             </table>
           </div>

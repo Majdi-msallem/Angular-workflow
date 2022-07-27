@@ -3,7 +3,7 @@ import { RolesService } from './../../../../shared/service/roleService/roles.ser
 import { role } from './../../../../shared/models/Role';
 import { Component, OnInit } from '@angular/core';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
-import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-user',
@@ -28,12 +28,12 @@ export class AddUserComponent implements OnInit {
   ngOnInit(): void {
 
     this.userForm= this.fb.group({
-      email:[],
-      userName:[],
-      userLName:[],
-      userFName:[],
-      password:[],
-      role:[]
+      email:['',  [Validators.email,Validators.required]],
+      userName:['',Validators.required],
+      userLName:['',Validators.required],
+      userFName:['',Validators.required],
+      password:['',Validators.required],
+      role:['',Validators.required]
     })
 
     this.dropdownSettings = {     
@@ -48,14 +48,17 @@ export class AddUserComponent implements OnInit {
   }
 
   addUser(){
-    console.log("formulaire",this.userForm.value)
+  if(this.userForm.valid)    {
     this.userService.adduser(this.userForm.value).subscribe(
       x=>{this.userForm.reset(),
         this.showdetail=false
-    
       }),
       e=>console.log(e)
+    }else{
+      console.log("erreur form")
     }
+  }
+   
 }
 
 

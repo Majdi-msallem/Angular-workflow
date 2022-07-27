@@ -13,10 +13,10 @@ import * as Rellax from 'rellax';
 export class ListMailComponent implements OnInit {
   allmail:any
   mailDetails:any
-  
-
-page:any
-colloectionSize:any
+  pageSize=5
+  page=0
+  collectionSize:number
+  key:string=""
 
 
   constructor(
@@ -25,17 +25,39 @@ colloectionSize:any
   ) { }
 
   ngOnInit(): void {
-    this.getAllMail();
+    this.getAllMail({ page: 0, size: 5,recherche:this.key });
     
   }
- getAllMail(){
-    this.mailService.AllMail().subscribe(res=>{
+ getAllMail(request){
+    this.mailService.AllMail(request).subscribe(res=>{
         this.allmail=res
-      //  console.log("les email",res)
+        ['content'];
+      this.collectionSize=res['totalElements'];
     })
   }
   DetailsMail(idMail:number){
     this.router.navigate(['admin/mail/details-m',idMail])
+  }
+  nextPage(event:any){
+    const request = {};
+    request['page'] = event-1
+    request['size'] = this.pageSize
+    request['recherche']=this.key
+    console.log(request)
+    this.getAllMail(request);
+  }
+
+
+  search(event){
+    this.key=event
+    const request = {};
+    request['page'] = 0
+    request['size'] = this.pageSize
+    this.page=0
+    request['recherche']=this.key
+    console.log(request)
+    this.getAllMail(request);
+  
   }
   // Maildetails(mail:any){
   //   this.mailService.GetMailById(mail.idMail).subscribe(res=>{

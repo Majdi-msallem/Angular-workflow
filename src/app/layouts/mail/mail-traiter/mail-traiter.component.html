@@ -24,7 +24,13 @@
                   Traitement RH 
                 </th>
                 <th>
+                  Etat 
+                </th>
+                <th>
                   Traitement Tech
+                </th>
+                <th>
+                  Etat 
                 </th>
                 
               </thead>
@@ -42,9 +48,27 @@
                   <td>
                     {{mt.tr1.generatedby}}
                   </td>
+                  <td *ngIf="mt?.tr1?.etat==null">
+                    <span class="badge badge-warning"> non traiter </span>
+                  </td>
+                  <td *ngIf="mt?.tr1?.etat!=null && mt?.tr1?.etat== 'accepter' ">
+                    <span class="badge badge-success"> accepter </span>
+                  </td>
+                  <td *ngIf="mt?.tr1?.etat!=null && mt?.tr1?.etat== 'refuser' ">
+                    <span class="badge badge-danger"> refuser </span>
+                  </td>
                   <td>
                     {{mt?.tr2?.generatedby}}
                   </td>
+                <td *ngIf="mt?.tr2?.etat==null">
+                 <span class="badge badge-warning"> non traiter </span>
+               </td>
+               <td *ngIf="mt?.tr2?.etat!=null && mt?.tr2?.etat== 'accepter' ">
+                 <span class="badge badge-success"> accepter </span>
+               </td>
+               <td *ngIf="mt?.tr2?.etat!=null && mt?.tr2?.etat== 'refuser' ">
+                 <span class="badge badge-danger"> refuser </span>
+               </td>
                 </tr>
                
               </tbody>

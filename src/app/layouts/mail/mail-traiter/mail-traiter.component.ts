@@ -18,7 +18,7 @@ export class MailTraiterComponent implements OnInit {
   getMailTraiter(){
     this.mailService.Mailstraiter().subscribe(res=>{
         this.mailtraiter=res
-     // console.log("les email traiter ",res)
+      console.log("les email traiter ",res)
     })
   }
 }

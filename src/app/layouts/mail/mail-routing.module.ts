@@ -1,3 +1,5 @@
+import { ListeMailTraitementTechComponent } from './liste-mail-traitement-tech/liste-mail-traitement-tech.component';
+import { ListeMailTraitementRhComponent } from './liste-mail-traitement-rh/liste-mail-traitement-rh.component';
 import { MailsDrhComponent } from './mails-drh/mails-drh.component';
 import { MailNontraiterComponent } from './mail-nontraiter/mail-nontraiter.component';
 import { MailTraiterComponent } from './mail-traiter/mail-traiter.component';
@@ -20,11 +22,15 @@ const routes: Routes = [
   {path:'list-mt',component:MailTraiterComponent},
   {path:'list-mnt',component:MailNontraiterComponent},
 
+  {path:'list-tr1',component:ListeMailTraitementRhComponent},
+  {path:'list-tr2',component:ListeMailTraitementTechComponent},
 
 
-  {path:'first-tr',component:FirstTraitementComponent},
-  {path:'second-tr',component:SecondTraitementComponent},
 
+
+
+  {path:'listMailsForRHconnected',component:FirstTraitementComponent},
+  {path:'listMailsForTechconnected',component:SecondTraitementComponent},
   {path:'listMailsForDRH',component:MailsDrhComponent},
 
   {path:'details-m/:idMail',component:DertailsMailComponent}

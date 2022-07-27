@@ -29,7 +29,8 @@ import { RoleComponent } from './role/role.component';
     DashboardComponent,
     UsersComponent,
     RoleComponent,
-    MailComponent
+    MailComponent,
+
   ]
 })
 

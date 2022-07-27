@@ -94,7 +94,7 @@
             <span  *ngIf="oneMail.tr2 && oneMail.tr2.etat=='accepter'" class="badge badge-success" >Accepter</span>
           </div> 
           
-              <div class="card card-user" *ngIf="oneMail.tr2==null && testrole==true">
+              <div class="card card-user" *ngIf="oneMail.tr2==null && vr==true ">
                 <div class="image">
                   <img src="../../../../assets/img/enttecg.jpg" style="width:100%;" alt="...">
                 </div>
@@ -109,7 +109,6 @@
                   <br>
                   <div class="col-md-12 pr-1">
                     <h3>Traitement Technique</h3>
-    
                     <div class="form-group">
                       <label> Note</label>
                       <textarea [(ngModel)]="note"
@@ -147,8 +146,8 @@
 
         </div>
       </div> 
-      
-      <div *ngIf="showtr" class="col-md-12"  style="margin-top:-300px ;"><br>
+       </div>
+      <div *ngIf="showtr && oneMail.tr1==null && vr2==true" class="col-md-12"  style="margin-top:-300px ;"  ><br>
       <br>
           <div class="card card-user">
             <div class="image">
@@ -200,9 +199,9 @@
             </div>
           </div>
         </div>
-      </div>
-
-      <div *ngIf="showtr" class="col-md-12"  style="margin-top:-300px ;"><br>
+     
+ 
+      <div *ngIf="showtr && oneMail.tr3==null && vr3==true" class="col-md-12"  style="margin-top:-300px ;"><br>
         <br>
             <div class="card card-user">
               <div class="image">
@@ -234,28 +233,13 @@
               </div>
               <hr>
               <div class="button-container">
-                <button href="#" class="btn btn-primary" (click)="accpettr()">
+                <button href="#" class="btn btn-primary" (click)="accpetdrh()">
                   accepter
               </button>
-              <button href="#" class="btn btn-danger" (click)="refusertr()">
+              <button href="#" class="btn btn-danger" (click)="refusedrh()">
                   refuser
               </button>
               </div>
             </div>
           </div>
-        
-      
-        
-        <br>
-  <br>
-  <br><br>
-    <button class="btn">Default</button>
-    <button class="btn btn-primary">Primary</button>
-    <button class="btn btn-info">Info</button>
-    <button class="btn btn-success">Success</button>
-    <button class="btn btn-warning">Warning</button>
-    <button class="btn btn-danger">Danger</button>
-    <button class="btn btn-neutral">Neutral</button>
-
-    
   

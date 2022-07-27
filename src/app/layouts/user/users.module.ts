@@ -1,3 +1,4 @@
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UsersComponent } from './users.component';
@@ -21,7 +22,8 @@ import { ProfilUserComponent } from './profil-user/profil-user.component';
     UsersRoutingModule,
     NgMultiSelectDropDownModule.forRoot(),
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    NgbModule
     
   ]
 })

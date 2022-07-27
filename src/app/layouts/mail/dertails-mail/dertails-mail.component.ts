@@ -23,6 +23,9 @@ export class DertailsMailComponent implements OnInit {
     listusertech:any
     dropdownSettings:IDropdownSettings={};
     vr:boolean
+    vr2:boolean
+    vr3:boolean
+
   constructor(
     private mailService:MailService,
     private userservice:UserService,
@@ -75,18 +78,17 @@ refusedTechTr(){
   this.traitementService.accpetedTechTr(this.idMail,this.note,this.etat).subscribe();
 }
   testrole(){
-
     this.userservice.getuser().subscribe(
-      (user)=> {  console.log("path",user)
-      
+      (user)=> {  
       user.role.forEach(element => {
-        console.log("element",element)
-      if(element.roleName=="tech")
+        //console.log("element",element.roleName)
+      if(element.roleName=="tech" || element.roleName=="d_rh")
       this.vr=true
-    
+      if(element.roleName=="rh" || element.roleName=="d_rh")
+      this.vr2=true
+      if( element.roleName=="d_rh")
+      this.vr3=true
     })})
-    
-    
     }
 
   }

@@ -1,5 +1,5 @@
 import { UserAuthService } from './user-auth.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'environments/environment';
 import { userModel } from 'shared/models/User';
@@ -63,8 +63,12 @@ export class UserService {
   getuser() :Observable<userModel> {
     return this.httpclient.get<userModel>(this.url+'/getuser');
   }
-  getalluser():Observable<userModel>{
-    return this.httpclient.get<userModel>(this.url+'/getalluser')
+  getalluser(o:any):Observable<userModel>{
+    const params = new HttpParams()
+  .set('page', o.page)
+  .set('size', o.size)
+  .set('recherche', o.recherche)
+    return this.httpclient.get<userModel>(this.url+'/getalluser',{params})
   }
   getalltechuser():Observable<userModel>{
     return this.httpclient.get<userModel>(this.url+'/getalltechuser')

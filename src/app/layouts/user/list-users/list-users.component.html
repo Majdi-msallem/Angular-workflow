@@ -2,11 +2,23 @@
 </div>
 <div class="main-content">
   <div class="row">
+    
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
           <h4 class="card-title"> Liste des utlisateurs</h4>
         </div>
+        <form>
+          <div class="input-group no-border col-md-4">
+            <input type="text" value="" class="form-control" placeholder="Search... "  (ngModelChange)="search($event)" [ngModel]="key" name="key" >
+            <div class="input-group-append">
+              
+              <div class="input-group-text">
+                <i class="now-ui-icons ui-1_zoom-bold"></i>
+              </div>
+            </div>
+          </div>
+        </form>
         <div class="card-body" >
           <div class="table-responsive">
             <table class="table" >
@@ -51,12 +63,20 @@
                     <button class="btn btn-warning "><i class="now-ui-icons ui-1_settings-gear-63"></i></button> &nbsp;
                     <button class="btn btn-danger "><i class="now-ui-icons ui-1_simple-remove"></i></button>
                    
-                    
+
                   </td>
                 </tr>
               </tbody>
             </table>
+            <ngb-pagination  
+            [boundaryLinks]="true"  [maxSize]="3" [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="nextPage($event);" class="pagination-primary">
+            </ngb-pagination>
           </div>
         </div>
       </div>
     </div>
+    </div>
+
+
+
+ 

@@ -8,6 +8,17 @@
   <div class="main-content" style="margin-top: -100px;">
       
   <div class="row">
+    <form>
+      <div class="input-group no-border">
+        <input type="text" value="" class="form-control" placeholder="Search... "  (ngModelChange)="search($event)" [ngModel]="key" name="key" >
+        <div class="input-group-append">
+          
+          <div class="input-group-text">
+            <i class="now-ui-icons ui-1_zoom-bold"></i>
+          </div>
+        </div>
+      </div>
+    </form>
     <div class="col-md-12"><br>
           <!-- <strong style="margin-left:10%">Liste mails</strong> -->
     <table  class="table table-condensed table-hover" style="background-color:white ;">   
@@ -54,7 +65,9 @@
         
       </tbody>
     </table>
-    
+    <ngb-pagination  
+    [boundaryLinks]="true"  [maxSize]="3" [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="nextPage($event);" class="pagination-primary">
+    </ngb-pagination>
   </div>
  </div>
 

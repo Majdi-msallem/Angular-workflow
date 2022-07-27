@@ -1,3 +1,4 @@
+import { MailService } from './../../../../shared/service/mailService/mail.service';
 import { TraitementService } from './../../../../shared/service/traitementService/traitement.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -7,21 +8,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./first-traitement.component.css']
 })
 export class FirstTraitementComponent implements OnInit {
-    alltr:any
+  mailsrh:any
   constructor(
-    private traitementService:TraitementService
+    private mailService:MailService
   ) { }
 
 
   ngOnInit(): void {
-    this.getAlltrByRoleRh();
+      this.listemailsPourRH();
   }
   
-  getAlltrByRoleRh(){
-    this.traitementService.gettraitementByRoleOfUserConnected().subscribe(res=>{
-      this.alltr=res
-      //console.log("trait",res)
-  })
-}
+ 
+  listemailsPourRH(){
+    this.mailService.listeMailTR1BYUserConnected().subscribe(res=>{
+         this.mailsrh=res
+        console.log("les email for rh ",res)
+    })
+  }
 
 }

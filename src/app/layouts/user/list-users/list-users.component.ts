@@ -9,18 +9,47 @@ import { Router } from '@angular/router';
 })
 export class ListUsersComponent implements OnInit {
     allusers:any
+    pageSize=5
+    page=0
+    collectionSize:number
+    key:string=""
+
   constructor(
     private router:Router,
     private userService:UserService
   ) { }
 
   ngOnInit(): void {
-    this.getAllusers();
+    this.getAllusers({ page: 0, size: 5,recherche:this.key });
   }
-  getAllusers(){
-    this.userService.getalluser().subscribe(res=>{
-       this.allusers=res
+  getAllusers(request){
+    this.userService.getalluser(request).subscribe(res=>{
+      console.log("liste",res)
+       this.allusers= res['content'];
       // console.log("les users",res)
+      this.collectionSize=res['totalElements'];
     })
+  }
+
+  nextPage(event:any){
+    const request = {};
+    request['page'] = event-1
+    request['size'] = this.pageSize
+    request['recherche']=this.key
+    console.log(request)
+    this.getAllusers(request);
+  }
+
+
+  search(event){
+    this.key=event
+    const request = {};
+    request['page'] = 0
+    request['size'] = this.pageSize
+    this.page=0
+    request['recherche']=this.key
+    console.log(request)
+    this.getAllusers(request);
+  
   }
 }

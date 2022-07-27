@@ -1,3 +1,4 @@
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -14,7 +15,8 @@ import { MailEncoursComponent } from './mail-encours/mail-encours.component';
 import { MailTraiterComponent } from './mail-traiter/mail-traiter.component';
 import { MailNontraiterComponent } from './mail-nontraiter/mail-nontraiter.component';
 import { MailsDrhComponent } from './mails-drh/mails-drh.component';
-import {MatPaginatorModule} from '@angular/material/paginator';
+import { ListeMailTraitementRhComponent } from './liste-mail-traitement-rh/liste-mail-traitement-rh.component';
+import { ListeMailTraitementTechComponent } from './liste-mail-traitement-tech/liste-mail-traitement-tech.component';
 
 
 @NgModule({
@@ -28,6 +30,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
       MailTraiterComponent,
       MailNontraiterComponent,
       MailsDrhComponent,
+      ListeMailTraitementRhComponent,
+      ListeMailTraitementTechComponent,
     ],
   imports: [
     CommonModule,
@@ -35,10 +39,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     NgMultiSelectDropDownModule.forRoot(),
     ReactiveFormsModule,
     FormsModule,
-
-
-    MatPaginatorModule
-
+    NgbModule
   ]
 })
 export class MailModule { }
