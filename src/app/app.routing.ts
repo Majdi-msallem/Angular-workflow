@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { NotfoundComponent } from 'shared/components/notfound/notfound.component';
 import { PageComponent } from './Page/page.component';
 import { AuthGuard } from 'shared/guard/auth.guard';
+import { LoginGuard } from 'shared/guard/login.guard.spec';
 
 const routes: Routes =[
   {
@@ -17,6 +18,7 @@ const routes: Routes =[
   {
     path: 'login',
     component: LoginComponent,
+    canActivate:[LoginGuard] 
     
   },
   {

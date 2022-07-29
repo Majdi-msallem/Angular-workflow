@@ -1,3 +1,4 @@
+import { UserService } from 'shared/service/user.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profil-user.component.css']
 })
 export class ProfilUserComponent implements OnInit {
+  user:any
+  constructor(
+    private userService:UserService
+  ) { }
 
-  constructor() { }
 
   ngOnInit(): void {
+    this.getuser();
   }
+  getuser(){
+    this.userService.getuser().subscribe(res=>{
+       this.user= res
+    })
+  }
+
 
 }

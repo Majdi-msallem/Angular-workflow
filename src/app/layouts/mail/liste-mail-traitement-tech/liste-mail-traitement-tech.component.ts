@@ -8,6 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListeMailTraitementTechComponent implements OnInit {
   allt2:any
+  pageSize=5
+  page=0
+  collectionSize:number
+  key:string=""
   constructor(
     private traitementService:TraitementService
   ) { }
@@ -18,8 +22,8 @@ export class ListeMailTraitementTechComponent implements OnInit {
 
   getAlltraitementTech(){
     this.traitementService.listTR2().subscribe(res=>{
-     this.allt2=res
-     console.log("tech",res)
+     this.allt2=res 
  })
 }
+
 }

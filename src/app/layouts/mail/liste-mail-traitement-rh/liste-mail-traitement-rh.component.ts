@@ -8,6 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListeMailTraitementRhComponent implements OnInit {
   allt1:any
+  pageSize=5
+  page=0
+  collectionSize:number
+  key:string=""
   constructor(
     private traitementService:TraitementService
   ) { }
@@ -18,7 +22,8 @@ this.getAlltraitementRH();
   }
   getAlltraitementRH(){
        this.traitementService.listTR1().subscribe(res=>{
-        this.allt1=res
+        this.allt1=res 
     })
 }
+
 }

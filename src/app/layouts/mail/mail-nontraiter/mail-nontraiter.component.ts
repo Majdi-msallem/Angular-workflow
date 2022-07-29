@@ -8,18 +8,44 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MailNontraiterComponent implements OnInit {
   mailNontraiter:any
+  pageSize=5
+  page=0
+  collectionSize:number
+  key:string=""
   constructor(
     private mailService:MailService
   ) { }
 
   ngOnInit(): void {
-    this.getMailNonTraiter();
+    this.getMailNonTraiter({ page: 0, size: 5,recherche:this.key });
   }
 
-  getMailNonTraiter(){
-    this.mailService.MailsNontraiter().subscribe(res=>{
-        this.mailNontraiter=res
-       console.log("les email non traiter ",res)
+  getMailNonTraiter(request){
+    this.mailService.MailsNontraiter(request).subscribe(res=>{
+        this.mailNontraiter=res ['content'];
+        this.collectionSize=res['totalElements'];
+       //console.log("les email non traiter ",res)
     })
+  }
+  nextPage(event:any){
+    const request = {};
+    request['page'] = event-1
+    request['size'] = this.pageSize
+    request['recherche']=this.key
+    console.log(request)
+    this.getMailNonTraiter(request);
+  }
+
+
+  search(event){
+    this.key=event
+    const request = {};
+    request['page'] = 0
+    request['size'] = this.pageSize
+    this.page=0
+    request['recherche']=this.key
+    console.log(request)
+    this.getMailNonTraiter(request);
+  
   }
 }

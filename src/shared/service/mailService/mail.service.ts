@@ -27,14 +27,26 @@ export class MailService {
   downloadPdf(idMail:any,idAtt:any){
     return this.http.get(this.url+"/src"+idMail+'/'+idAtt)
   }
-  Mailencours(): Observable<mailModel[]>{
-    return this.http.get<mailModel[]>(this.url+"/mailsencours");
+  Mailencours(o:any): Observable<mailModel[]>{
+    const params = new HttpParams()
+    .set('page', o.page)
+    .set('size', o.size)
+    .set('recherche', o.recherche)
+    return this.http.get<mailModel[]>(this.url+"/mailsencours",{params});
   }
-  MailsNontraiter(): Observable<mailModel[]>{
-    return this.http.get<mailModel[]>(this.url+"/mailsnontraiter");
+  MailsNontraiter(o:any): Observable<mailModel[]>{
+    const params = new HttpParams()
+    .set('page', o.page)
+    .set('size', o.size)
+    .set('recherche', o.recherche)
+    return this.http.get<mailModel[]>(this.url+"/mailsnontraiter",{params});
   }
-  Mailstraiter(){
-    return this.http.get(this.url+"/mailstraiter");
+  Mailstraiter(o:any){
+    const params = new HttpParams()
+    .set('page', o.page)
+    .set('size', o.size)
+    .set('recherche', o.recherche)
+    return this.http.get(this.url+"/mailstraiter",{params});
   }
   listeMailTR1BYUserConnected():Observable<mailModel[]>{
     return this.http.get<mailModel[]>(this.url+"/listeMailsGeneratedByName");
