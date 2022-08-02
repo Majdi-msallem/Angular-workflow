@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MailEncoursComponent implements OnInit {
     mailencours:any
-    pageSize=5
+  pageSize=5
   page=0
   collectionSize:number
   key:string=""

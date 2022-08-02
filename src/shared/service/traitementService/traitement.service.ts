@@ -2,7 +2,6 @@ import { Traitement } from './../../models/Traitement';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'environments/environment';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,12 +15,12 @@ export class TraitementService {
   ) { }
 
   //Traitement Rh
-  refusedRhTr(idMail:any,fs:any,note:any,etat:any,userName:any){
-    return this.httpclient.get(this.url+'/process/start/'+ idMail+'/'+fs+'/'+note+'/'+etat+'/'+userName);
+  refusedRhTr(idMail:any,fs:any,note:any,etat:any,userName:any,meet:any){
+    return this.httpclient.get(this.url+'/process/start/'+ idMail+'/'+fs+'/'+note+'/'+etat+'/'+userName+'/'+meet);
   }
 
-  accpeteddRhTr(idMail:any,fs:any,note:any,etat:any,userName:any){
-    return this.httpclient.get(this.url+'/process/start/'+ idMail+'/'+fs+'/'+note+'/'+etat+'/'+userName);
+  accpeteddRhTr(idMail:any,fs:any,note:any,etat:any,userName:any,meet:any){
+    return this.httpclient.get(this.url+'/process/start/'+ idMail+'/'+fs+'/'+note+'/'+etat+'/'+userName+'/'+meet);
   }
   //mailtasksSend by role 
   gettraitementByRoleOfUserConnected(){
@@ -41,11 +40,12 @@ export class TraitementService {
     return this.httpclient.get(this.url+'/process/tr2/'+ idMail+'/'+note+'/'+etat);
   }
 
-  //liste des traitement tech& rh 
-  listTR1(){
-    return this.httpclient.get(this.url+'/tr1')
+  //traitement drh 
+  refuseddrhTr(idMail:any,note:any,etat:any,ls:any){
+    return this.httpclient.get(this.url+'/process/tr3/'+ idMail+'/'+ls+'/'+note+'/'+etat);
   }
-  listTR2(){
-    return this.httpclient.get(this.url+'/tr2')
+
+  accpeteddrhTr(idMail:any,note:any,etat:any,ls:any){
+    return this.httpclient.get(this.url+'/process/tr3/'+ idMail+'/'+ls+'/'+note+'/'+etat);
   }
 }

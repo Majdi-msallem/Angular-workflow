@@ -1,5 +1,6 @@
 import { TraitementService } from './../../../../shared/service/traitementService/traitement.service';
 import { Component, OnInit } from '@angular/core';
+import { MailService } from 'shared/service/mailService/mail.service';
 
 @Component({
   selector: 'app-liste-mail-traitement-rh',
@@ -12,18 +13,42 @@ export class ListeMailTraitementRhComponent implements OnInit {
   page=0
   collectionSize:number
   key:string=""
+ 
   constructor(
-    private traitementService:TraitementService
+    private mailService:MailService
   ) { }
 
   ngOnInit(): void {
-this.getAlltraitementRH();
+this.getAlltraitementRH({ page: 0, size: 5,recherche:this.key });
 
   }
-  getAlltraitementRH(){
-       this.traitementService.listTR1().subscribe(res=>{
-        this.allt1=res 
+  getAlltraitementRH(request){
+       this.mailService.listTR1(request).subscribe(res=>{
+        this.allt1=res ['content'];
+        this.collectionSize=res['totalElements'];
     })
 }
+nextPage(event:any){
+  const request = {};
+  request['page'] = event-1
+  request['size'] = this.pageSize
+  request['recherche']=this.key
+  console.log(request)
+  this.getAlltraitementRH(request);
+}
+
+
+search(event){
+  this.key=event
+  const request = {};
+  request['page'] = 0
+  request['size'] = this.pageSize
+  this.page=0
+  request['recherche']=this.key
+  console.log(request)
+  this.getAlltraitementRH(request);
+
+}
+
 
 }

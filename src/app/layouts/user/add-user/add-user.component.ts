@@ -3,7 +3,7 @@ import { RolesService } from './../../../../shared/service/roleService/roles.ser
 import { role } from './../../../../shared/models/Role';
 import { Component, OnInit } from '@angular/core';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-user',

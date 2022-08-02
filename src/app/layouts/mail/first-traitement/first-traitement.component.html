@@ -5,7 +5,18 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title"> liste des mails traiter par RH:</h4>
+          <h4 class="card-title"> liste des mails traiter par RHaa:</h4>
+          <form class="col-md-4">
+            <div class="input-group no-border">
+              <input type="text" value="" class="form-control" placeholder="Search... "  (ngModelChange)="search($event)" [ngModel]="key" name="key" >
+              <div class="input-group-append">
+                
+                <div class="input-group-text">
+                  <i class="now-ui-icons ui-1_zoom-bold"></i>
+                </div>
+              </div>
+            </div>
+          </form>
         </div>
         <div class="card-body">
           <div class="table-responsive">
@@ -46,9 +57,11 @@
                     <span class="badge badge-danger"> refuser </span>
                   </td>
                 </tr>
-
               </tbody>
             </table>
+            <ngb-pagination  
+            [boundaryLinks]="true"  [maxSize]="3" [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="nextPage($event);" class="pagination-primary">
+            </ngb-pagination>
           </div>
         </div>
       </div>

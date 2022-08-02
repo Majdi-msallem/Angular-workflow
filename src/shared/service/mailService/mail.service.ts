@@ -13,7 +13,21 @@ export class MailService {
   url=environment.url
 
 
-
+//liste des traitement tech& rh  for drhhh
+listTR1(o:any){
+  const params = new HttpParams()
+    .set('page', o.page)
+    .set('size', o.size)
+    .set('recherche', o.recherche)
+  return this.http.get(this.url+'/tr1',{params})
+}
+listTR2(o:any){
+  const params = new HttpParams()
+  .set('page', o.page)
+  .set('size', o.size)
+  .set('recherche', o.recherche)
+  return this.http.get(this.url+'/tr2',{params})
+}
   AllMail(o:any): Observable<mailModel[]> { 
     const params = new HttpParams()
     .set('page', o.page)
@@ -48,7 +62,11 @@ export class MailService {
     .set('recherche', o.recherche)
     return this.http.get(this.url+"/mailstraiter",{params});
   }
-  listeMailTR1BYUserConnected():Observable<mailModel[]>{
-    return this.http.get<mailModel[]>(this.url+"/listeMailsGeneratedByName");
+  listeMailTR1BYUserConnected(o:any):Observable<mailModel[]>{
+    const params = new HttpParams()
+    .set('page', o.page)
+    .set('size', o.size)
+    .set('recherche', o.recherche)
+    return this.http.get<mailModel[]>(this.url+"/listeMailsGeneratedByName",{params});
   }
 }

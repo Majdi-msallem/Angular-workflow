@@ -1,3 +1,4 @@
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RoleRoutingModule } from './role-routing.module';
@@ -15,6 +16,7 @@ import { DetailsRoleComponent } from './details-role/details-role.component';
     RoleRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    NgbModule,
     NgMultiSelectDropDownModule.forRoot()
   ]
 })

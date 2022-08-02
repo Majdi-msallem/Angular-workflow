@@ -8,7 +8,10 @@ export class mailModel{
     contentType:string
     cause:string
     Status:string
+    meet:string
     tr1:Traitement
     tr2:Traitement
+    tr3:Traitement
+
 
 }

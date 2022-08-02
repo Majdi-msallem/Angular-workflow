@@ -1,3 +1,4 @@
+import { MailService } from './../../../../shared/service/mailService/mail.service';
 import { TraitementService } from './../../../../shared/service/traitementService/traitement.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -13,17 +14,39 @@ export class ListeMailTraitementTechComponent implements OnInit {
   collectionSize:number
   key:string=""
   constructor(
-    private traitementService:TraitementService
+    private mailService:MailService
   ) { }
 
   ngOnInit(): void {
-    this.getAlltraitementTech();
+    this.getAlltraitementTech({ page: 0, size: 5,recherche:this.key });
   }
 
-  getAlltraitementTech(){
-    this.traitementService.listTR2().subscribe(res=>{
-     this.allt2=res 
+  getAlltraitementTech(request){
+    this.mailService.listTR2(request).subscribe(res=>{
+     this.allt2=res  ['content'];
+     this.collectionSize=res['totalElements'];
  })
+}
+nextPage(event:any){
+  const request = {};
+  request['page'] = event-1
+  request['size'] = this.pageSize
+  request['recherche']=this.key
+  console.log(request)
+  this.getAlltraitementTech(request);
+}
+
+
+search(event){
+  this.key=event
+  const request = {};
+  request['page'] = 0
+  request['size'] = this.pageSize
+  this.page=0
+  request['recherche']=this.key
+  console.log(request)
+  this.getAlltraitementTech(request);
+
 }
 
 }

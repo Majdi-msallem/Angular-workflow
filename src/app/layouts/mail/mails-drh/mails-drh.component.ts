@@ -21,7 +21,7 @@ export class MailsDrhComponent implements OnInit {
   listeMailForDRH(){
     this.traitementService.gettraitementByRoleOfUserConnected().subscribe(res=>{
          this.mailsdrh=res
-        //console.log("les email for drh ",res)
+        console.log("les email for drh ",res)
     })
   }
   DetailsMail(idMail:number){

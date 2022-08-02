@@ -27,16 +27,16 @@
               <tbody>
                 <tr (click)="DetailsMail(m.idMail)" *ngFor="let m of mailsdrh ">
                   <td>
-                    {{m.senderAddress}}
+                    {{m?.senderAddress}}
                   </td>
                   <td>
-                    {{m.subject}} 
+                    {{m?.subject}} 
                   </td>
                   <td>
-                    {{m.tr1.generatedby}}
+                    {{m?.tr1.generatedby}}
                   </td>
                   <td >
-                    {{m.tr2.generatedby}}
+                    {{m?.tr2.generatedby}}
                   </td>
                 </tr>
               </tbody>

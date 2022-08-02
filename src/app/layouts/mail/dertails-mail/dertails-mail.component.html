@@ -11,10 +11,10 @@
                   <div class="col-md-12 mb-4 mt-4">
                     <div class="btn-toolbar">
                       <div class="btn-group" >
-                        <button *ngIf="oneMail.status=='nontraiter'" class="btn btn-info" (click)="affichetr()">commencer le traitement</button>
+                        <button *ngIf="oneMail?.status=='nontraiter'" class="btn btn-info" (click)="affichetr()">commencer le traitement</button>
                         &nbsp;
                         &nbsp;
-                        <button *ngIf="oneMail.status=='encours' || oneMail.status=='traiter'" (click)="afficherdetailstr()" class="btn btn-warning">Details de traitement</button>
+                        <button *ngIf="oneMail?.status=='encours' || oneMail?.status=='traiter'" (click)="afficherdetailstr()" class="btn btn-warning">Details de traitement</button>
                                
                       </div>
                     </div>
@@ -29,18 +29,18 @@
                       </p>
                       <p class="sender-email">
                         
-                        <a href="#">{{oneMail.senderAddress}}</a>
+                        <a href="#">{{oneMail?.senderAddress}}</a>
                         &nbsp;
                       </p>
                     </div>
                   </div>
                   <div class="message-content">
-                    <p>{{oneMail.subject}}</p>
-                    <p>{{oneMail.cc}}</p>
+                    <p>{{oneMail?.subject}}</p>
+                    <p>{{oneMail?.cc}}</p>
                   </div>
                   <div class="attachments-sections col-md-3">
                     <ul >
-                      <li *ngFor="let att of oneMail.attachments">
+                      <li *ngFor="let att of oneMail?.attachments">
                         <div class="thumb"><i class="mdi mdi-file-pdf"></i></div>
                         <div class="details">
                           <p class="file-name"></p>
@@ -165,26 +165,27 @@
                   <textarea [(ngModel)]="note"
                   class="form-control" style="border:1px solid grey;border-radius: 5px;" id="exampleFormControlTextarea1" rows="6"></textarea>
                 </div>
+                
               </div>
-      
-       {{note}}
-      {{etat}} 
-      {{userName}}
-              <div class="col-md-12 pr-1">
+              <div class="col-md-6 pr-1">
                   <div class="form-group">
                     <label>Etat</label>
                  <select   [(ngModel)]="etat" name="dropdownOption" id="dropdownOption" class='form-control'>       
                   <option value="accepter">Accepter</option>
                   <option value="refuser">Refuser</option>
-      
                   </select>
               </div>
-              <div class="form-group">
+              <div class="form-group" *ngIf="etat=='accepter'">
                 <label  >tech liste</label>
              <select [(ngModel)]="userName" name="dropdownOption" id="dropdownOption" class='form-control'>       
               <option *ngFor="let tu of listusertech">{{tu.userName}}</option>
               
               </select>
+          </div>
+          <div class="form-group" *ngIf="userName!=null && etat=='accepter'">
+            <label> lien meet </label>
+            <textarea [(ngModel)]="meet"
+            class="form-control" style="border:1px solid grey;border-radius: 5px;" id="exampleFormControlTextarea1" rows="6"></textarea>
           </div>
               </div>
             </div>
@@ -201,7 +202,7 @@
         </div>
      
  
-      <div *ngIf="showtr && oneMail.tr3==null && vr3==true" class="col-md-12"  ><br>
+      <div *ngIf="showdettr && oneMail.tr3==null && vr3==true" class="col-md-12"  ><br>
         <br>
             <div class="card card-user">
               <div class="image">
@@ -220,7 +221,6 @@
                     class="form-control" style="border:1px solid grey;border-radius: 5px;" id="exampleFormControlTextarea1" rows="6"></textarea>
                   </div>
                 </div>
-         {{note}}{{etat}} 
                 <div class="col-md-12 pr-1">
                     <div class="form-group">
                       <label>Etat</label>
@@ -242,4 +242,5 @@
               </div>
             </div>
           </div>
+        </div>
   

@@ -4,6 +4,7 @@ import { MailService } from './../../../../shared/service/mailService/mail.servi
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-dertails-mail',
@@ -20,18 +21,22 @@ export class DertailsMailComponent implements OnInit {
     note:any
     etat:any
     userName:any
+    meet:any
     listusertech:any
     dropdownSettings:IDropdownSettings={};
     vr:boolean
     vr2:boolean
     vr3:boolean
+    rhform:FormGroup;
+
 
   constructor(
     private mailService:MailService,
     private userservice:UserService,
     private activatedRoute:ActivatedRoute,
     private router:Router,
-    private traitementService:TraitementService
+    private traitementService:TraitementService,
+    private fb: FormBuilder
   ) { }
 
   ngOnInit(    ): void {
@@ -43,6 +48,7 @@ export class DertailsMailComponent implements OnInit {
       this.oneMail =data;
      console.log("detailsMail",this.oneMail)
     }, error => console.log(error));
+   
 }
 affichetr(){
       this.showtr=true;
@@ -58,10 +64,10 @@ downloadpf(){
 
 //rh
 refusertr(){
- this.traitementService.refusedRhTr(this.idMail,2,this.note,this.etat,this.userName).subscribe();
+ this.traitementService.refusedRhTr(this.idMail,2,this.note,this.etat,this.userName,this.meet).subscribe();
 }
 accpettr(){
-  this.traitementService.refusedRhTr(this.idMail,1,this.note,this.etat,this.userName).subscribe();
+  this.traitementService.accpeteddRhTr(this.idMail,1,this.note,this.etat,this.userName,this.meet).subscribe();
  }
  userTechList(){
   this.userservice.getalltechuser().subscribe(res=>{
@@ -77,6 +83,15 @@ accpetedTechTr(){
 refusedTechTr(){
   this.traitementService.accpetedTechTr(this.idMail,this.note,this.etat).subscribe();
 }
+//drh
+accpeteddrhTr(){
+  this.traitementService.accpeteddrhTr(this.idMail,1,this.note,this.etat).subscribe();
+}
+refuseddrhTr(){
+  this.traitementService.accpeteddrhTr(this.idMail,2,this.note,this.etat).subscribe();
+}
+
+
   testrole(){
     this.userservice.getuser().subscribe(
       (user)=> {  
