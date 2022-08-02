@@ -203,6 +203,7 @@
      
  
       <div *ngIf="showdettr && oneMail.tr3==null && vr3==true" class="col-md-12"  ><br>
+        <form [formGroup]="formdrh">
         <br>
             <div class="card card-user">
               <div class="image">
@@ -217,14 +218,16 @@
                   <h3>Traitement DRh</h3>
                   <div class="form-group">
                     <label> Note</label>
-                    <textarea [(ngModel)]="note"
+                    <textarea formControlName="note"
                     class="form-control" style="border:1px solid grey;border-radius: 5px;" id="exampleFormControlTextarea1" rows="6"></textarea>
                   </div>
                 </div>
+                {{note}}
                 <div class="col-md-12 pr-1">
                     <div class="form-group">
                       <label>Etat</label>
-                   <select   [(ngModel)]="etat" name="dropdownOption" id="dropdownOption" class='form-control'>       
+                   <select     formControlName="etat"
+                    name="dropdownOption" id="dropdownOption" class='form-control'>       
                     <option value="accepter">Accepter</option>
                     <option value="refuser">Refuser</option>
                     </select>
@@ -241,6 +244,7 @@
               </button>
               </div>
             </div>
+          </form>
           </div>
         </div>
   

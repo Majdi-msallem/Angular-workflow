@@ -28,7 +28,7 @@ export class DertailsMailComponent implements OnInit {
     vr2:boolean
     vr3:boolean
     rhform:FormGroup;
-
+    formdrh:FormGroup
 
   constructor(
     private mailService:MailService,
@@ -48,7 +48,11 @@ export class DertailsMailComponent implements OnInit {
       this.oneMail =data;
      console.log("detailsMail",this.oneMail)
     }, error => console.log(error));
-   
+    this.formdrh=this.fb.group
+    ({
+      note:[],
+      etat:[]
+    })
 }
 affichetr(){
       this.showtr=true;
@@ -64,6 +68,8 @@ downloadpf(){
 
 //rh
 refusertr(){
+  this.userName=null;
+  this.meet=null;
  this.traitementService.refusedRhTr(this.idMail,2,this.note,this.etat,this.userName,this.meet).subscribe();
 }
 accpettr(){
