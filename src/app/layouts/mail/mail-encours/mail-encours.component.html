@@ -23,25 +23,25 @@
             <table class="table">
               <thead class=" text-primary">
                 <th>
-                  Subject
+                  Sujet
                 </th>
                 <th>
-                  Note
+                  Adresse email
                 </th>
                 <th>
                   Etat
                 </th>
                 
               </thead>
-              <tbody *ngFor="let m of mailencours ">
-                <tr>
-                  <td>
+              <tbody >
+                <tr (click)="DetailsMail(m.idMail)" *ngFor="let m of mailencours "  >
+                  <td class=" text-left col-md-1">
                     {{m.subject}}
                   </td>
-                  <td>
+                  <td class=" text-left col-md-2">
                     {{m.senderAddress}}
                   </td>
-                  <td>
+                  <td >
                     {{m.cc}}
                   </td>               
                 </tr>       

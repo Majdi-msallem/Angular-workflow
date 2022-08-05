@@ -33,12 +33,12 @@
                 </th>
 
               </thead>
-              <tbody *ngFor="let mn of mailNontraiter ">
-                <tr>
-                  <td>
+              <tbody >
+                <tr (click)="DetailsMail(mn.idMail)"  *ngFor="let mn of mailNontraiter ">
+                  <td class=" text-left col-md-1">
                     {{mn.subject}}
                   </td>
-                  <td>
+                  <td class=" text-left col-md-2">
                     {{mn.senderAddress}}
                   </td>
                   <td>

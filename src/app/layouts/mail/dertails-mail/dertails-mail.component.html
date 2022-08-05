@@ -61,8 +61,7 @@
       </div>    
       
       <div *ngIf="showdettr" class="col-md-8">
-        <br>
-        <br>
+        
         <div class="card ">
           <div class="card-body">
             <h4 class="card-title">traitement Rh</h4>
@@ -93,117 +92,134 @@
             <span *ngIf="oneMail.tr2 && oneMail.tr2.etat=='encours'" class="badge badge-info" >encours</span>
             <span  *ngIf="oneMail.tr2 && oneMail.tr2.etat=='accepter'" class="badge badge-success" >Accepter</span>
           </div> 
-          
-              <div class="card card-user" *ngIf="oneMail.tr2==null && vr==true ">
-                <div class="image">
-                  <img src="../../../../assets/img/enttecg.jpg" style="width:100%;" alt="...">
-                </div>
-                <div class="card-body">
-                  <div class="author">
-                 <br>
-                 <br>
-                 <br>         
-                  </div>
-                  <br>
-                  <br>
-                  <br>
-                  <div class="col-md-12 pr-1">
-                    <h3>Traitement Technique</h3>
-                    <div class="form-group">
-                      <label> Note</label>
-                      <textarea [(ngModel)]="note"
-                      class="form-control" style="border:1px solid grey;border-radius: 5px;" id="exampleFormControlTextarea1" rows="6"></textarea>
-                    </div>
-                  </div>
-          
-           {{note}}
-          {{etat}} 
-                  <div class="col-md-12 pr-1">
-                      <div class="form-group">
-                        <label>Etat</label>
-                     <select   [(ngModel)]="etat" name="dropdownOption" id="dropdownOption" class='form-control'>       
-                      <option value="accepter">Accepter</option>
-                      <option value="refuser">Refuser</option>
-          
-                      </select>
-                  </div>
-                 
-                  </div>
-                </div>
-                <hr>
-                <div class="button-container">
-                  <button href="#" class="btn btn-primary" (click)="accpetedTechTr()">
-                    accepter
-                </button>
-                <button href="#" class="btn btn-danger" (click)="refusedTechTr()">
-                    refuser
-                </button>
-                </div>
-              </div>
-           
-            
-
-
         </div>
       </div> 
        </div>
+       <div class="card card-user" *ngIf="oneMail?.tr2==null && vr==true ">
+        <div class="image">
+          <img src="../../../../assets/img/enttecg.jpg" style="width:100%;" alt="...">
+        </div>
+        <div class="card-body">
+          <div class="author">
+         <br>
+         <br>
+         <br>         
+          </div>
+          <br>
+          <br>
+          <br>
+          <div class="col-md-12 pr-1">
+            <h3>Traitement Technique</h3>
+            <div class="form-group">
+              <label> Note</label>
+              <textarea 
+              class="form-control" style="border:1px solid grey;border-radius: 5px;" id="exampleFormControlTextarea1" rows="6"></textarea>
+            </div>
+          </div>
+  
+   {{note}}
+  {{etat}} 
+          <div class="col-md-12 pr-1">
+              <div class="form-group">
+                <label>Etat</label>
+             <select    name="dropdownOption" id="dropdownOption" class='form-control'>       
+              <option value="accepter">Accepter</option>
+              <option value="refuser">Refuser</option>
+  
+              </select>
+          </div>
+         
+          </div>
+        </div>
+        <hr>
+        <div class="button-container">
+          <button href="#" class="btn btn-primary" (click)="accpetedTechTr()">
+            accepter
+        </button>
+        <button href="#" class="btn btn-danger" (click)="refusedTechTr()">
+            refuser
+        </button>
+        </div>
+      </div>
+
+
+
+
+
+
+
       <div *ngIf="showtr && oneMail.tr1==null && vr2==true" class="col-md-12"  style="margin-top:-300px ;"  ><br>
       <br>
           <div class="card card-user">
+            <form #Formrh="ngForm">
             <div class="image">
               <img src="../../../../assets/img/traitement1.PNG" style="width:100%;" alt="...">
             </div>
             <div class="card-body">
+              
               <div class="author">
+                
              <br><br> <br>         
               </div>
               <br><br><br>
               <div class="col-md-12 pr-1">
-                <h3>Traitement Rh</h3>
-                <div class="form-group">
-                  <label> Note</label>
-                  <textarea [(ngModel)]="note"
-                  class="form-control" style="border:1px solid grey;border-radius: 5px;" id="exampleFormControlTextarea1" rows="6"></textarea>
-                </div>
-                
+                <h3>Traitement Rh</h3>    
               </div>
               <div class="col-md-6 pr-1">
                   <div class="form-group">
                     <label>Etat</label>
-                 <select   [(ngModel)]="etat" name="dropdownOption" id="dropdownOption" class='form-control'>       
+                 <select   ngModel  #etat="ngModel" name="etat" id="etat" class='form-control'>       
                   <option value="accepter">Accepter</option>
                   <option value="refuser">Refuser</option>
                   </select>
               </div>
-              <div class="form-group" *ngIf="etat=='accepter'">
+              <div class="form-group" >
+                <label> Note</label>
+                <textarea  ngModel name="note" #note="ngModel"
+                class="form-control" style="border:1px solid grey;border-radius: 5px;" id="exampleFormControlTextarea1" rows="6"></textarea>
+              </div>
+              <div class="form-group" *ngIf="Formrh?.value?.etat=='accepter'">
                 <label  >tech liste</label>
-             <select [(ngModel)]="userName" name="dropdownOption" id="dropdownOption" class='form-control'>       
+             <select [(ngModel)]="userName"     name="userName" id="dropdownOption" class='form-control'>       
               <option *ngFor="let tu of listusertech">{{tu.userName}}</option>
               
               </select>
           </div>
-          <div class="form-group" *ngIf="userName!=null && etat=='accepter'">
+          <div class="form-group" *ngIf="Formrh?.value?.userName!=null && Formrh?.value?.etat=='accepter'">
             <label> lien meet </label>
-            <textarea [(ngModel)]="meet"
+            <textarea   name="meet" #meet="ngModel" ngModel 
             class="form-control" style="border:1px solid grey;border-radius: 5px;" id="exampleFormControlTextarea1" rows="6"></textarea>
           </div>
               </div>
             </div>
             <hr>
             <div class="button-container">
-              <button href="#" class="btn btn-primary" (click)="accpettr()">
+              <button href="#"  class="btn btn-primary" (click)="accpettr(Formrh)">
                 accepter
             </button>
-            <button href="#" class="btn btn-danger" (click)="refusertr()">
+            <button href="#" class="btn btn-danger" (click)="refusertr(Formrh)">
                 refuser
             </button>
             </div>
+          </form>
           </div>
         </div>
      
  
+
+
+
+
+
+
+
+
+
+
+
+
+
       <div *ngIf="showdettr && oneMail.tr3==null && vr3==true" class="col-md-12"  ><br>
-        <form [formGroup]="formdrh">
         <br>
             <div class="card card-user">
               <div class="image">
@@ -218,7 +234,7 @@
                   <h3>Traitement DRh</h3>
                   <div class="form-group">
                     <label> Note</label>
-                    <textarea formControlName="note"
+                    <textarea 
                     class="form-control" style="border:1px solid grey;border-radius: 5px;" id="exampleFormControlTextarea1" rows="6"></textarea>
                   </div>
                 </div>
@@ -226,7 +242,7 @@
                 <div class="col-md-12 pr-1">
                     <div class="form-group">
                       <label>Etat</label>
-                   <select     formControlName="etat"
+                   <select     
                     name="dropdownOption" id="dropdownOption" class='form-control'>       
                     <option value="accepter">Accepter</option>
                     <option value="refuser">Refuser</option>
@@ -236,15 +252,15 @@
               </div>
               <hr>
               <div class="button-container">
-                <button href="#" class="btn btn-primary" (click)="accpetdrh()">
+                <button href="#" class="btn btn-primary" (click)="accpeteddrhTr()">
                   accepter
               </button>
-              <button href="#" class="btn btn-danger" (click)="refusedrh()">
+              <button href="#" class="btn btn-danger" (click)="refuseddrhTr()">
                   refuser
               </button>
               </div>
             </div>
-          </form>
+          
           </div>
         </div>
   

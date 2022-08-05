@@ -19,7 +19,7 @@ export class TraitementService {
     return this.httpclient.get(this.url+'/process/start/'+ idMail+'/'+fs+'/'+note+'/'+etat+'/'+userName+'/'+meet);
   }
 
-  accpeteddRhTr(idMail:any,fs:any,note:any,etat:any,userName:any,meet:any){
+  accpetedRhTr(idMail:any,fs:any,note:any,etat:any,userName:any,meet:any){
     return this.httpclient.get(this.url+'/process/start/'+ idMail+'/'+fs+'/'+note+'/'+etat+'/'+userName+'/'+meet);
   }
   //mailtasksSend by role 
@@ -41,11 +41,11 @@ export class TraitementService {
   }
 
   //traitement drh 
-  refuseddrhTr(idMail:any,note:any,etat:any,ls:any){
+  refuseddrhTr(idMail:any,ls:any,note:any,etat:any){
     return this.httpclient.get(this.url+'/process/tr3/'+ idMail+'/'+ls+'/'+note+'/'+etat);
   }
 
-  accpeteddrhTr(idMail:any,note:any,etat:any,ls:any){
+  accpeteddrhTr(idMail:any,ls:any,note:any,etat:any){
     return this.httpclient.get(this.url+'/process/tr3/'+ idMail+'/'+ls+'/'+note+'/'+etat);
   }
 }

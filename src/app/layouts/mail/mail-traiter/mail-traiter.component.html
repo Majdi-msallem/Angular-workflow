@@ -28,33 +28,32 @@
                 <th>
                   adresse email
                 </th>
-                <th>
-                  Contenu
-                </th>
-                <th>
+                <th class="text-left">
                   Traitement RH 
                 </th>
-                <th>
+                <th class="text-left">
                   Etat 
                 </th>
-                <th>
+                <th class="text-left">
                   Traitement Tech
                 </th>
-                <th>
+                <th class="text-left">
                   Etat 
+                </th>     
+                <th class="text-left">
+                  traitement directeur rh 
                 </th>
-                
+                <th class="text-left">
+                  Etat 
+                </th>    
               </thead>
               <tbody *ngFor="let mt of mailtraiter">
                 <tr>
-                  <td>
+                  <td class="col-md-2">
                     {{mt.subject}}
                   </td>
-                  <td>
+                  <td class="col-md-2">
                     {{mt.senderAddress}}
-                  </td>
-                  <td>
-                    {{mt.cc}}
                   </td>
                   <td>
                     {{mt.tr1.generatedby}}
@@ -80,6 +79,18 @@
                <td *ngIf="mt?.tr2?.etat!=null && mt?.tr2?.etat== 'refuser' ">
                  <span class="badge badge-danger"> refuser </span>
                </td>
+               <td>
+                {{mt?.tr3?.generatedby}}
+              </td>
+            <td *ngIf="mt?.tr3?.etat==null">
+             <span class="badge badge-warning"> non traiter </span>
+           </td>
+           <td *ngIf="mt?.tr3?.etat!=null && mt?.tr3?.etat== 'accepter' ">
+             <span class="badge badge-success"> accepter </span>
+           </td>
+           <td *ngIf="mt?.tr3?.etat!=null && mt?.tr3?.etat== 'refuser' ">
+             <span class="badge badge-danger"> refuser </span>
+           </td>
                 </tr>
               </tbody>
             </table>

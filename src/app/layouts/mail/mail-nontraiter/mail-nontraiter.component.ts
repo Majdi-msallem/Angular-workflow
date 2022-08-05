@@ -1,5 +1,6 @@
 import { MailService } from './../../../../shared/service/mailService/mail.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mail-nontraiter',
@@ -13,11 +14,15 @@ export class MailNontraiterComponent implements OnInit {
   collectionSize:number
   key:string=""
   constructor(
-    private mailService:MailService
+    private mailService:MailService,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
     this.getMailNonTraiter({ page: 0, size: 5,recherche:this.key });
+  }
+  DetailsMail(idMail:number){
+    this.router.navigate(['admin/mail/details-m',idMail])
   }
 
   getMailNonTraiter(request){

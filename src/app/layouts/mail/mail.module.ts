@@ -1,5 +1,4 @@
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MailRoutingModule } from './mail-routing.module';
@@ -7,7 +6,7 @@ import { ListMailComponent } from './list-mail/list-mail.component';
 import { DertailsMailComponent } from './dertails-mail/dertails-mail.component';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from 'app/app.routing';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { FirstTraitementComponent } from './first-traitement/first-traitement.component';
 import { SecondTraitementComponent } from './second-traitement/second-traitement.component';
@@ -17,6 +16,7 @@ import { MailNontraiterComponent } from './mail-nontraiter/mail-nontraiter.compo
 import { MailsDrhComponent } from './mails-drh/mails-drh.component';
 import { ListeMailTraitementRhComponent } from './liste-mail-traitement-rh/liste-mail-traitement-rh.component';
 import { ListeMailTraitementTechComponent } from './liste-mail-traitement-tech/liste-mail-traitement-tech.component';
+import { NgModule } from '@angular/core';
 
 
 @NgModule({
@@ -39,7 +39,7 @@ import { ListeMailTraitementTechComponent } from './liste-mail-traitement-tech/l
     NgMultiSelectDropDownModule.forRoot(),
     ReactiveFormsModule,
     FormsModule,
-    NgbModule
-  ]
+    NgbModule,
+    ]
 })
 export class MailModule { }

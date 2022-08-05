@@ -1,77 +1,68 @@
-
-  <!-- <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css"> -->
-  <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-  <div class="panel-header panel-header-sm">
-  </div>
- 
-  <div class="main-content" style="margin-top: -100px;">
-      
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
   <div class="row">
-  
-    <div class="col-md-12"><br>
-      <form class="col-md-4">
-        <div class="input-group no-border">
-          <input type="text" value="" class="form-control" placeholder="Search... "  (ngModelChange)="search($event)" [ngModel]="key" name="key" >
-          <div class="input-group-append">
-            
-            <div class="input-group-text">
-              <i class="now-ui-icons ui-1_zoom-bold"></i>
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title"> liste des emails</h4>
+          <form class="col-md-4">
+            <div class="input-group no-border">
+              <input type="text" value="" class="form-control" placeholder="Search... "  (ngModelChange)="search($event)" [ngModel]="key" name="key" >
+              <div class="input-group-append">
+                
+                <div class="input-group-text">
+                  <i class="now-ui-icons ui-1_zoom-bold"></i>
+                </div>
+              </div>
             </div>
+          </form>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class=" text-primary">
+                <th>
+                  Adresse email
+                </th>
+                <th>
+                  Sujets
+                </th>
+                <th>
+                  Status
+                </th>
+              </thead>
+              <tbody >
+                <tr (click)="DetailsMail(mail.idMail)" *ngFor="let mail of allmail "> 
+                  <td class="col-md-3">
+                    {{mail.senderAddress}}
+                  </td>
+                  <td class="col-md-3">
+                    {{mail.subject}}
+                  </td>
+                  <td  *ngIf="mail.status=='nontraiter'">
+                       <span class="badge badge-warning" >Non traiter</span>
+                   </td>
+                 <td  *ngIf="mail.status=='encours'">
+                      <span class="badge badge-info" >encours..</span>
+                  </td>
+                  <td  *ngIf="mail.status=='traiter'">
+                      <span class="badge badge-success" >traiter..</span>
+                        </td>
+                </tr>
+              </tbody>
+            </table>
+            <ngb-pagination  
+            [boundaryLinks]="true"  [maxSize]="3" [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="nextPage($event);" class="pagination-primary">
+            </ngb-pagination>
           </div>
         </div>
-      </form>
-          <!-- <strong style="margin-left:10%">Liste mails</strong> -->
-    <table  class="table table-condensed table-hover" style="background-color:white ;">   
-      <thead>
-        <th>
+      </div>
+    </div>
 
-        </th>
-        <th class="text-center">
-          Subject
-        </th>
-        <th class="text-center" >
-          Status
-        </th>
-        <th class="text-center" >
-          Adresse
-        </th>
-        <th class="text-center">
-          Contenu
-        </th>
-      </thead>
-      <tbody>
-        <tr  (click)="DetailsMail(mail.idMail)" *ngFor=" let mail of allmail">
-          <td> <a > 
-            <strong>
-              <button > <i class="now-ui-icons ui-1_email-85"></i>
-          </button>
-            </strong>
-          <!-- <i class="now-ui-icons ui-1_email-85"></i> -->
-        </a></td>
-          <td><strong>{{mail.subject}}</strong></td>
-          <td class="text-right" *ngIf="mail.status=='nontraiter'">
-            <span class="badge badge-warning" >Non traiter</span>
-          </td>
-          <td class="text-right" *ngIf="mail.status=='encours'">
-            <span class="badge badge-info" >encours..</span>
-          </td>
-          <td class="text-right" *ngIf="mail.status=='traiter'">
-            <span class="badge badge-success" >traiter..</span>
-          </td>
-          <!-- <td><span class="badge badge-success"> {{mail.status}}</span></td> -->
-          <td><strong>{{mail.senderAddress}}</strong></td>
-          <td><strong>{{mail.cc}}</strong></td>
-        </tr>
-        
-      </tbody>
-    </table>
-    <ngb-pagination  
-    [boundaryLinks]="true"  [maxSize]="3" [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="nextPage($event);" class="pagination-primary">
-    </ngb-pagination>
-  </div>
- </div>
 
-  </div>
-  
+
+
+
+  <
   

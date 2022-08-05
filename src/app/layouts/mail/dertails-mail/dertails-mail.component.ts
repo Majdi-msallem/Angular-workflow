@@ -4,7 +4,10 @@ import { MailService } from './../../../../shared/service/mailService/mail.servi
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
+import { Traitement } from 'shared/models/Traitement';
+import { format } from 'path';
+
 
 @Component({
   selector: 'app-dertails-mail',
@@ -27,8 +30,6 @@ export class DertailsMailComponent implements OnInit {
     vr:boolean
     vr2:boolean
     vr3:boolean
-    rhform:FormGroup;
-    formdrh:FormGroup
 
   constructor(
     private mailService:MailService,
@@ -48,11 +49,8 @@ export class DertailsMailComponent implements OnInit {
       this.oneMail =data;
      console.log("detailsMail",this.oneMail)
     }, error => console.log(error));
-    this.formdrh=this.fb.group
-    ({
-      note:[],
-      etat:[]
-    })
+   
+
 }
 affichetr(){
       this.showtr=true;
@@ -67,13 +65,17 @@ downloadpf(){
 } 
 
 //rh
-refusertr(){
-  this.userName=null;
+refusertr(form:NgForm){
   this.meet=null;
- this.traitementService.refusedRhTr(this.idMail,2,this.note,this.etat,this.userName,this.meet).subscribe();
+  this.userName=null;
+  //console.log("taba3 khlifa",form.value)
+ this.traitementService.refusedRhTr(this.idMail,2,form.value.note,form.value.etat,this.userName,this.meet).subscribe();
+ form.disabled;
 }
-accpettr(){
-  this.traitementService.accpeteddRhTr(this.idMail,1,this.note,this.etat,this.userName,this.meet).subscribe();
+accpettr(form:NgForm){
+   //console.log("taba3 khlifa",form.value)
+  this.traitementService.accpetedRhTr(this.idMail,1,form.value.note,form.value.etat,form.value.userName,form.value.meet).subscribe();
+  form.disabled;
  }
  userTechList(){
   this.userservice.getalltechuser().subscribe(res=>{
@@ -91,10 +93,11 @@ refusedTechTr(){
 }
 //drh
 accpeteddrhTr(){
-  this.traitementService.accpeteddrhTr(this.idMail,1,this.note,this.etat).subscribe();
+
+  this.traitementService.accpeteddrhTr(this.idMail,2,this.note,this.etat).subscribe();
 }
 refuseddrhTr(){
-  this.traitementService.accpeteddrhTr(this.idMail,2,this.note,this.etat).subscribe();
+  this.traitementService.accpeteddrhTr(this.idMail,1,this.note,this.etat).subscribe();
 }
 
 
