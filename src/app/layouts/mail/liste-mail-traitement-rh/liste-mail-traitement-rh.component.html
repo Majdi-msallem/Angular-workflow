@@ -53,13 +53,13 @@
                   <td>
                     {{lm?.subject}}
                   </td>
-                   <td *ngIf="lm?.tr2?.etat==null">
-                    <span class="badge badge-warning"> non traiter </span>
+                   <td *ngIf="lm?.tr1?.etat==null">
+                    <span class="badge badge-warning"  > non traiter </span>
                   </td>
-                  <td *ngIf="lm?.tr2?.etat!=null && lm?.tr2?.etat== 'accepter' ">
-                    <span class="badge badge-success"> accepter </span>
+                  <td *ngIf="lm?.tr1?.etat!=null && lm?.tr1?.etat== 'accepter' ">
+                    <span class="badge badge-success" > accepter </span>
                   </td>
-                  <td *ngIf="lm?.tr2?.etat!=null && lm?.tr2?.etat== 'refuser' ">
+                  <td *ngIf="lm?.tr1?.etat!=null && lm?.tr1?.etat== 'refuser' ">
                     <span class="badge badge-danger"> refuser </span>
                   </td>
                 </tr>

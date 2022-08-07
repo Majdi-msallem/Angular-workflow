@@ -47,8 +47,8 @@
                   Etat 
                 </th>    
               </thead>
-              <tbody *ngFor="let mt of mailtraiter">
-                <tr>
+              <tbody >
+                <tr (click)="DetailsMail(mt.idMail)" *ngFor="let mt of mailtraiter">
                   <td class="col-md-2">
                     {{mt.subject}}
                   </td>

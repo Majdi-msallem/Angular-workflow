@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'environments/environment';
 import { userModel } from 'shared/models/User';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -72,5 +73,10 @@ export class UserService {
   }
   getalltechuser():Observable<userModel>{
     return this.httpclient.get<userModel>(this.url+'/getalltechuser')
+  }
+  deleteUser(id:number){
+    return this.httpclient.delete<any>(this.url+ "/deleteUser/"+id).pipe(map((res:any)=>{
+      return res ;
+    }))
   }
 }

@@ -20,8 +20,20 @@
                 <th>
                   Traitement rh
                 </th>
+                <th>
+                  etat
+                </th>
                 <th >
                   Traitement tech
+                </th>
+                <th>
+                  etat
+                </th>
+                <th >
+                  Traitement final
+                </th>
+                <th>
+                  etat
                 </th>
               </thead>
               <tbody>
@@ -35,10 +47,32 @@
                   <td>
                     {{m?.tr1.generatedby}}
                   </td>
+                           <td  *ngIf="m?.tr1.etat=='accepter'">
+                              <span class="badge badge-success" style="font-size: 15px;" >accepter</span>
+                           </td>
+                           <td  *ngIf="m?.tr1.etat=='refuser'">
+                              <span class="badge badge-danger" style="font-size: 15px;" >refuser..</span>
+                           </td>
                   <td >
                     {{m?.tr2.generatedby}}
                   </td>
+                              <td  *ngIf="m?.tr2.etat=='accepter'">
+                                     <span class="badge badge-success" style="font-size: 15px;" >accepter</span>
+                               </td>
+                             <td  *ngIf="m?.tr2.etat=='refuser'">
+                                   <span class="badge badge-danger" style="font-size: 15px;" >refuser..</span>
+                            </td>
+                            <td >
+                              {{m?.tr3?.generatedby}}
+                            </td>
+                                        <td  *ngIf="m?.tr3?.etat=='accepter'">
+                                               <span class="badge badge-success" style="font-size: 15px;" >accepter</span>
+                                         </td>
+                                       <td  *ngIf="m?.tr3?.etat=='refuser'">
+                                             <span class="badge badge-danger" style="font-size: 15px;" >refuser..</span>
+                                      </td>         
                 </tr>
+                
               </tbody>
             </table>
           </div>

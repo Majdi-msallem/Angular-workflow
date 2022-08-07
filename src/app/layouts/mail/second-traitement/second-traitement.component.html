@@ -5,7 +5,7 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title"> liste des mails traiter techniquement:</h4>
+          <h4 class="card-title"> liste des mails traiter :</h4>
         </div>
         <div class="card-body">
           <div class="table-responsive">
@@ -43,13 +43,13 @@
                     {{lm?.subject}}
                   </td>
                    <td *ngIf="lm?.tr2?.etat==null">
-                    <span class="badge badge-warning"> non traiter </span>
+                    <span class="badge badge-warning" style="font-size: 15px;"> non traiter </span>
                   </td>
                   <td *ngIf="lm?.tr2?.etat!=null && lm?.tr2?.etat== 'accepter' ">
-                    <span class="badge badge-success"> accepter </span>
+                    <span class="badge badge-success" style="font-size: 15px;"> accepter </span>
                   </td>
                   <td *ngIf="lm?.tr2?.etat!=null && lm?.tr2?.etat== 'refuser' ">
-                    <span class="badge badge-danger"> refuser </span>
+                    <span class="badge badge-danger" style="font-size: 15px;"> refuser </span>
                   </td>
                 </tr>
                

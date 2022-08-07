@@ -30,13 +30,15 @@ export const ROUTES: RouteInfo[] = [
 
 
     //traitement for Role tech & rh 
-    {path:'/admin/mail/listMailsForRHconnected', title:'Mes traitement', icon:'business_badge', class: '',roleName:["rh"]},
-    {path:'/admin/mail/listMailsForTechconnected', title:'Mes traitements', icon:'tech_laptop', class: '',roleName:["tech"]},
+    {path:'/admin/mail/listMailsForRHconnected', title:'Mes traitement RH', icon:'business_badge', class: '',roleName:["rh","d_rh"]},
+    {path:'/admin/mail/listMailsForTechconnected', title:'Mes traitements Tech', icon:'tech_laptop', class: '',roleName:["tech"]},
 
     //role
       { path: '/admin/role/list-r', title: 'Liste Role',  icon:'design_bullet-list-67', class: '',roleName:["d_rh"] },
 
     
+      //liste mails of tech connect
+      {path:'/admin/mail/techlistm', title:'liste de traitement ', icon:'tech_laptop', class: '',roleName:["tech"]},
 
 
 ];

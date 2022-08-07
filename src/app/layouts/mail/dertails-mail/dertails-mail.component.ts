@@ -5,8 +5,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
-import { Traitement } from 'shared/models/Traitement';
-import { format } from 'path';
 
 
 @Component({
@@ -35,9 +33,7 @@ export class DertailsMailComponent implements OnInit {
     private mailService:MailService,
     private userservice:UserService,
     private activatedRoute:ActivatedRoute,
-    private router:Router,
     private traitementService:TraitementService,
-    private fb: FormBuilder
   ) { }
 
   ngOnInit(    ): void {
@@ -69,14 +65,22 @@ refusertr(form:NgForm){
   this.meet=null;
   this.userName=null;
   //console.log("taba3 khlifa",form.value)
- this.traitementService.refusedRhTr(this.idMail,2,form.value.note,form.value.etat,this.userName,this.meet).subscribe();
- form.disabled;
+ this.traitementService.refusedRhTr(this.idMail,2,form.value.note,form.value.etat,this.userName,this.meet).subscribe(
+  res=>{
+    form.resetForm
+  }
+ );
+ form.resetForm
 }
 accpettr(form:NgForm){
    //console.log("taba3 khlifa",form.value)
-  this.traitementService.accpetedRhTr(this.idMail,1,form.value.note,form.value.etat,form.value.userName,form.value.meet).subscribe();
-  form.disabled;
- }
+  this.traitementService.accpetedRhTr(this.idMail,1,form.value.note,form.value.etat,form.value.userName,form.value.meet).subscribe(
+    res=>{
+      form.resetForm
+    }
+  );
+ 
+}
  userTechList(){
   this.userservice.getalltechuser().subscribe(res=>{
       this.listusertech=res
@@ -85,28 +89,28 @@ accpettr(form:NgForm){
 }
 
 //tech 
-accpetedTechTr(){
-  this.traitementService.accpetedTechTr(this.idMail,this.note,this.etat).subscribe();
+accpetedTechTr(Formtech:NgForm){
+   //console.log("taba3 khlifa",Formtech.value)
+  this.traitementService.accpetedTechTr(this.idMail,Formtech.value.note,Formtech.value.etat).subscribe();
 }
-refusedTechTr(){
-  this.traitementService.accpetedTechTr(this.idMail,this.note,this.etat).subscribe();
+refusedTechTr(Formtech:NgForm){
+  this.traitementService.accpetedTechTr(this.idMail,Formtech.value.note,Formtech.value.etat).subscribe();
 }
 //drh
-accpeteddrhTr(){
-
-  this.traitementService.accpeteddrhTr(this.idMail,2,this.note,this.etat).subscribe();
+accpeteddrhTr(Formdrh:NgForm){
+  //console.log("taba3 khlifa",Formdrh.value)
+  this.traitementService.accpeteddrhTr(this.idMail,2,Formdrh.value.note,Formdrh.value.etat).subscribe();
+  Formdrh.resetForm();
 }
-refuseddrhTr(){
-  this.traitementService.accpeteddrhTr(this.idMail,1,this.note,this.etat).subscribe();
+refuseddrhTr(Formdrh:NgForm){
+  this.traitementService.accpeteddrhTr(this.idMail,1,Formdrh.value.note,Formdrh.value.etat).subscribe();
 }
-
-
   testrole(){
     this.userservice.getuser().subscribe(
       (user)=> {  
       user.role.forEach(element => {
         //console.log("element",element.roleName)
-      if(element.roleName=="tech" || element.roleName=="d_rh")
+      if(element.roleName=="tech")
       this.vr=true
       if(element.roleName=="rh" || element.roleName=="d_rh")
       this.vr2=true

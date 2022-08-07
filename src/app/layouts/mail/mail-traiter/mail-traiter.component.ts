@@ -1,5 +1,6 @@
 import { MailService } from './../../../../shared/service/mailService/mail.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mail-traiter',
@@ -13,7 +14,8 @@ export class MailTraiterComponent implements OnInit {
   collectionSize:number
   key:string=""
   constructor(
-    private mailService:MailService
+    private mailService:MailService,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
@@ -26,6 +28,9 @@ export class MailTraiterComponent implements OnInit {
         this.collectionSize=res['totalElements'];
      // console.log("les email traiter ",res)
     })
+  }
+  DetailsMail(idMail:number){
+    this.router.navigate(['admin/mail/details-m',idMail])
   }
   nextPage(event:any){
     const request = {};

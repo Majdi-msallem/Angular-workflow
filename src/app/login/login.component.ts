@@ -1,6 +1,7 @@
+import { myToastrService } from './../../shared/service/toastr/toastr.service';
 import { identifierModuleUrl } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import {  NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { UserAuthService } from 'shared/service/user-auth.service';
@@ -25,7 +26,8 @@ export class LoginComponent implements OnInit {
     constructor(
       private userService:UserService, 
       private userAuthService:UserAuthService,
-      private router:Router
+      private router:Router,
+      private toastr:myToastrService
       ) { }
 
     ngOnInit() {
@@ -42,7 +44,7 @@ export class LoginComponent implements OnInit {
 
         this.userAuthService.setRoles(response.user.role);
         this.userAuthService.setToken(response.jwtToken);
-//console.log(response)
+
        const role=  response.user.role[0].roleName;
        if(response.user.enabled==1){
         if(role=='d_rh'){
@@ -52,6 +54,8 @@ export class LoginComponent implements OnInit {
          }else if(role=='tech'){
           this.router.navigate(['/admin/mail/listMailsForTechconnected'])
          }
+         this.toastr.showNotification("top","right",2,"connexion"," avec succès",".......")
+
        }else{
         //this.router.navigate(['/admin/dashboard'])
         alert("vous devez activez votre compte par email")
@@ -59,6 +63,7 @@ export class LoginComponent implements OnInit {
       
       },
       (error)=>{
+        this.toastr.showNotification("top","right",4,"error:",error.message,".......")
         console.log(error);
       }
      );

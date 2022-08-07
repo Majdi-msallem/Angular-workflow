@@ -69,4 +69,12 @@ listTR2(o:any){
     .set('recherche', o.recherche)
     return this.http.get<mailModel[]>(this.url+"/listeMailsGeneratedByName",{params});
   }
+
+  listeMailTR2BYUserConnected(o:any):Observable<mailModel[]>{
+    const params = new HttpParams()
+    .set('page', o.page)
+    .set('size', o.size)
+    .set('recherche', o.recherche)
+    return this.http.get<mailModel[]>(this.url+"/listeMailstr2",{params});
+  }
 }

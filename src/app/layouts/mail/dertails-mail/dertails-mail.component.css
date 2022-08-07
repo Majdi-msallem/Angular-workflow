@@ -2,6 +2,12 @@ body{
     margin-top:20px;
     background: #eee;
 }
+div span{
+  font-size: 15px;
+}
+.card-body{
+  font-size: 50px;
+}
 /* Rounded sliders */
 /*-------------------------------------------------------------------*/
 /* === Email === */

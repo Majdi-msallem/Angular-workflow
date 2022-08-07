@@ -1,3 +1,4 @@
+import { TechListMailComponent } from './tech-list-mail/tech-list-mail.component';
 import { ListeMailTraitementTechComponent } from './liste-mail-traitement-tech/liste-mail-traitement-tech.component';
 import { ListeMailTraitementRhComponent } from './liste-mail-traitement-rh/liste-mail-traitement-rh.component';
 import { MailsDrhComponent } from './mails-drh/mails-drh.component';
@@ -33,7 +34,9 @@ const routes: Routes = [
   {path:'listMailsForTechconnected',component:SecondTraitementComponent},
   {path:'listMailsForDRH',component:MailsDrhComponent},
 
-  {path:'details-m/:idMail',component:DertailsMailComponent}
+  {path:'details-m/:idMail',component:DertailsMailComponent},
+
+  {path:'techlistm',component:TechListMailComponent}
 ];
 
 @NgModule({

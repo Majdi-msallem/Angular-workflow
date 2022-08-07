@@ -17,6 +17,7 @@ import { MailsDrhComponent } from './mails-drh/mails-drh.component';
 import { ListeMailTraitementRhComponent } from './liste-mail-traitement-rh/liste-mail-traitement-rh.component';
 import { ListeMailTraitementTechComponent } from './liste-mail-traitement-tech/liste-mail-traitement-tech.component';
 import { NgModule } from '@angular/core';
+import { TechListMailComponent } from './tech-list-mail/tech-list-mail.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { NgModule } from '@angular/core';
       MailsDrhComponent,
       ListeMailTraitementRhComponent,
       ListeMailTraitementTechComponent,
+      TechListMailComponent,
     ],
   imports: [
     CommonModule,

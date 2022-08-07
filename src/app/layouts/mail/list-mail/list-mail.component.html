@@ -41,13 +41,13 @@
                     {{mail.subject}}
                   </td>
                   <td  *ngIf="mail.status=='nontraiter'">
-                       <span class="badge badge-warning" >Non traiter</span>
+                       <span class="badge badge-warning" style="font-size: 15px;"  >Non traiter</span>
                    </td>
                  <td  *ngIf="mail.status=='encours'">
-                      <span class="badge badge-info" >encours..</span>
+                      <span class="badge badge-info" style="font-size: 15px;" >encours..</span>
                   </td>
-                  <td  *ngIf="mail.status=='traiter'">
-                      <span class="badge badge-success" >traiter..</span>
+                  <td  *ngIf="mail.status=='traiter' "  >
+                      <span class="badge badge-success" style="font-size: 15px;" >traiter.....</span>
                         </td>
                 </tr>
               </tbody>

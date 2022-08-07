@@ -1,3 +1,4 @@
+
 <div class="panel-header panel-header-sm">
 </div>
 <div class="main-content">
@@ -5,7 +6,7 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title"> liste des mails traiter par RHaa:</h4>
+          <h4 class="card-title"> tech liste mails traitées</h4>
           <form class="col-md-4">
             <div class="input-group no-border">
               <input type="text" value="" class="form-control" placeholder="Search... "  (ngModelChange)="search($event)" [ngModel]="key" name="key" >
@@ -23,37 +24,50 @@
             <table class="table">
               <thead class=" text-primary">
                 <th>
-                  Adress Email
-                </th>
+                    AdressEmail
+                  </th>
+                  <th>
+                    Sujet
+                  </th>
                 <th>
-                  Sujet
-                </th>
-                <th>
-                  Note
+                  Traitement Rh
                 </th>
                 <th>
                   etat
                 </th>
-                
+                <th>
+                    Traitement tech
+                  </th>
+                  <th>
+                    etat
+                  </th>
+               
               </thead>
-              <tbody>
-                <tr (click)="DetailsMail(lm.idMail)" *ngFor="let lm of mailsrh "> 
+              <tbody >
+                <tr (click)="DetailsMail(lm.idMail)" *ngFor="let lm of mailstech "> 
+                    <td>
+                        {{lm.senderAddress}}
+                      </td>
+                      <td>
+                        {{lm.subject}}
+                      </td>
                   <td>
-                    {{lm.senderAddress}}
+                    {{lm.tr1.generatedby}}
                   </td>
                   <td>
-                    {{lm.subject}}
+                    {{lm.tr1.etat}}
                   </td>
+                  
                   <td>
-                    {{lm?.tr1.note}}
+                    {{lm.tr2.generatedby}}
                   </td>
-                   <td *ngIf="lm?.tr1?.etat==null">
+                   <td *ngIf="lm.tr2.etat==null">
                     <span class="badge badge-warning" style="font-size: 15px;"> non traiter </span>
                   </td>
-                  <td *ngIf="lm?.tr1?.etat!=null && lm?.tr1?.etat== 'accepter' ">
+                  <td *ngIf="lm.tr2.etat!=null && lm.tr2.etat== 'accepter' ">
                     <span class="badge badge-success" style="font-size: 15px;"> accepter </span>
                   </td>
-                  <td *ngIf="lm?.tr1?.etat!=null && lm?.tr1?.etat== 'refuser' ">
+                  <td *ngIf="lm.tr2.etat!=null && lm.tr2.etat== 'refuser' ">
                     <span class="badge badge-danger" style="font-size: 15px;"> refuser </span>
                   </td>
                 </tr>

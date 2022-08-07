@@ -52,4 +52,11 @@ export class ListUsersComponent implements OnInit {
     this.getAllusers(request);
   
   }
+
+  deleteuser(user:any){
+    this.userService.deleteUser(user.id).subscribe(res=>{
+      alert("user supprimer")
+      this.getAllusers(Request);
+    })
+  }
 }

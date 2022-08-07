@@ -1,6 +1,7 @@
 import { TraitementService } from './../../../../shared/service/traitementService/traitement.service';
 import { Component, OnInit } from '@angular/core';
 import { MailService } from 'shared/service/mailService/mail.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-liste-mail-traitement-rh',
@@ -15,7 +16,8 @@ export class ListeMailTraitementRhComponent implements OnInit {
   key:string=""
  
   constructor(
-    private mailService:MailService
+    private mailService:MailService,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
@@ -27,6 +29,9 @@ this.getAlltraitementRH({ page: 0, size: 5,recherche:this.key });
         this.allt1=res ['content'];
         this.collectionSize=res['totalElements'];
     })
+}
+DetailsMail(idMail:number){
+  this.router.navigate(['admin/mail/details-m',idMail])
 }
 nextPage(event:any){
   const request = {};
