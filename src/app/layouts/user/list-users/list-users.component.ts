@@ -56,7 +56,7 @@ export class ListUsersComponent implements OnInit {
   deleteuser(user:any){
     this.userService.deleteUser(user.id).subscribe(res=>{
       alert("user supprimer")
-      this.getAllusers(Request);
+      this.getAllusers({ page: 0, size: 5,recherche:this.key });
     })
   }
 }

@@ -4,6 +4,7 @@ import { role } from './../../../../shared/models/Role';
 import { Component, OnInit } from '@angular/core';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { myToastrService } from 'shared/service/toastr/toastr.service';
 
 @Component({
   selector: 'app-add-user',
@@ -22,7 +23,8 @@ export class AddUserComponent implements OnInit {
   constructor(
     private rolesService:RolesService,
     private userService:UserService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private toastr:myToastrService
     ) { }
 
   ngOnInit(): void {
@@ -52,10 +54,12 @@ export class AddUserComponent implements OnInit {
     this.userService.adduser(this.userForm.value).subscribe(
       x=>{this.userForm.reset(),
         this.showdetail=false
+        this.toastr.showNotification("top","right",2,"utilisateur ","Ajouté avec succees",".......")   
+
       }),
       e=>console.log(e)
     }else{
-      console.log("erreur form")
+      this.toastr.showNotification("top","right",3,"erreur:","verifier vos champs",".......")
     }
   }
    

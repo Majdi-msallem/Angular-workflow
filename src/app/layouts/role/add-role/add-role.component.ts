@@ -1,7 +1,8 @@
 import { RolesService } from './../../../../shared/service/roleService/roles.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { role } from 'shared/models/Role';
+import { myToastrService } from 'shared/service/toastr/toastr.service';
 
 @Component({
   selector: 'app-add-role',
@@ -13,31 +14,35 @@ export class AddRoleComponent implements OnInit {
   Role:role=new role();
   constructor(
     private fb:FormBuilder,
-    private rolesService:RolesService
+    private rolesService:RolesService,
+    private toastr:myToastrService
+
   ) { }
 
   ngOnInit(): void {
     this.formValue=this.fb.group
     ({
-      roleName:[],
-      roleDescription:[]
+      roleName:['',Validators.required],
+      roleDescription:['',Validators.required]
     })
   }
 
   ajouterNouveauRole(){
     this.Role.roleName=this.formValue.value.roleName;
     this.Role.roleDescription=this.formValue.value.roleDescription;
-
+    if(this.formValue.valid)    {
     this.rolesService.addRole(this.Role)
     .subscribe(res=>{
       console.log("new role",res);
-      alert("Role ajouter avec succees")
-      this.formValue.reset();
+      this.toastr.showNotification("top","right",2,"Role ","Ajouter avec succees",".......")   
+         this.formValue.reset();
     },
       err=>{
-        alert("erreur lors de  lajout du role ")
       }
-    )
+    )}else{
+      this.toastr.showNotification("top","right",3,"erreur:","verifier vos champs",".......")
+
+    }
   }
 
  

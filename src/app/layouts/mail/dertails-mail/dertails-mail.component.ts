@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
+import { myToastrService } from 'shared/service/toastr/toastr.service';
 
 
 @Component({
@@ -34,6 +35,9 @@ export class DertailsMailComponent implements OnInit {
     private userservice:UserService,
     private activatedRoute:ActivatedRoute,
     private traitementService:TraitementService,
+    private router:Router,
+    private toastr:myToastrService
+
   ) { }
 
   ngOnInit(    ): void {
@@ -45,7 +49,7 @@ export class DertailsMailComponent implements OnInit {
       this.oneMail =data;
      console.log("detailsMail",this.oneMail)
     }, error => console.log(error));
-   
+    
 
 }
 affichetr(){
@@ -74,11 +78,17 @@ refusertr(form:NgForm){
 }
 accpettr(form:NgForm){
    //console.log("taba3 khlifa",form.value)
+   if(form.valid)    {
   this.traitementService.accpetedRhTr(this.idMail,1,form.value.note,form.value.etat,form.value.userName,form.value.meet).subscribe(
     res=>{
-      form.resetForm
-    }
+      this.toastr.showNotification("top","right",2,"traitement Rh ","traité avec succees",".......")   
+     // Formdrh.disabled;
+    }  
   );
+  }else{
+    this.toastr.showNotification("top","right",3,"erreur:","verifier vos champs",".......")
+
+  }
  
 }
  userTechList(){
@@ -91,19 +101,56 @@ accpettr(form:NgForm){
 //tech 
 accpetedTechTr(Formtech:NgForm){
    //console.log("taba3 khlifa",Formtech.value)
-  this.traitementService.accpetedTechTr(this.idMail,Formtech.value.note,Formtech.value.etat).subscribe();
+   if(Formtech.valid)    {
+  this.traitementService.accpetedTechTr(this.idMail,Formtech.value.note,Formtech.value.etat).subscribe(
+    res=>{
+      this.toastr.showNotification("top","right",2,"traitement technique ","traité avec succees",".......")   
+     // Formdrh.disabled;
+    }  
+  );
+  }else{
+    this.toastr.showNotification("top","right",3,"erreur:","verifier vos champs",".......")
+
+  }
 }
 refusedTechTr(Formtech:NgForm){
-  this.traitementService.accpetedTechTr(this.idMail,Formtech.value.note,Formtech.value.etat).subscribe();
+  if(Formtech.valid)    {
+  this.traitementService.accpetedTechTr(this.idMail,Formtech.value.note,Formtech.value.etat).subscribe(
+    res=>{
+      this.toastr.showNotification("top","right",2,"traitement technique ","traité avec succees",".......")   
+    }  
+  );
+  }else{
+    this.toastr.showNotification("top","right",3,"erreur:","verifier vos champs",".......")
+
+  }
 }
 //drh
 accpeteddrhTr(Formdrh:NgForm){
   //console.log("taba3 khlifa",Formdrh.value)
-  this.traitementService.accpeteddrhTr(this.idMail,2,Formdrh.value.note,Formdrh.value.etat).subscribe();
-  Formdrh.resetForm();
+  if(Formdrh.valid)    {
+  this.traitementService.accpeteddrhTr(this.idMail,2,Formdrh.value.note,Formdrh.value.etat).subscribe(
+    res=>{
+      this.toastr.showNotification("top","right",2,"traitement final ","traité avec succees",".......")   
+     // Formdrh.disabled;
+    }  
+  );
+  }else{
+    this.toastr.showNotification("top","right",3,"erreur:","verifier vos champs",".......")
+
+  }
 }
 refuseddrhTr(Formdrh:NgForm){
-  this.traitementService.accpeteddrhTr(this.idMail,1,Formdrh.value.note,Formdrh.value.etat).subscribe();
+  if(Formdrh.valid)    {
+  this.traitementService.accpeteddrhTr(this.idMail,1,Formdrh.value.note,Formdrh.value.etat).subscribe(
+    res=>{
+      this.toastr.showNotification("top","right",2,"traitement final ","traité avec succees",".......")   
+     // Formdrh.disabled;
+    }   
+  );}else{
+    this.toastr.showNotification("top","right",3,"erreur:","verifier vos champs",".......")
+
+  }
 }
   testrole(){
     this.userservice.getuser().subscribe(

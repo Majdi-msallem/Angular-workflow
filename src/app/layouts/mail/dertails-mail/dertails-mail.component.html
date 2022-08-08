@@ -238,14 +238,14 @@
                   <h3>Traitement DRh</h3>
                   <div class="form-group">
                     <label> Note</label>
-                    <textarea ngModel  #note="ngModel" name="note"
+                    <textarea ngModel  #note="ngModel" name="note" required 
                     class="form-control" style="border:1px solid grey;border-radius: 5px;" id="exampleFormControlTextarea1" rows="6"></textarea>
                   </div>
                 </div>
                 <div class="col-md-8 pr-1">
                     <div class="form-group">
                       <label>Etat</label>
-                   <select     ngModel  #etat="ngModel" name="etat"
+                   <select     ngModel  #etat="ngModel" name="etat" required 
                      id="dropdownOption" class='form-control'>       
                     <option value="accepter">Accepter</option>
                     <option value="refuser">Refuser</option>
