@@ -30,6 +30,9 @@ export class ListUsersComponent implements OnInit {
       this.collectionSize=res['totalElements'];
     })
   }
+  DetailsUser(id:number){
+    this.router.navigate(['admin/user/details/',id])
+  }
 
   nextPage(event:any){
     const request = {};

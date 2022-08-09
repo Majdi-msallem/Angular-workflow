@@ -43,7 +43,7 @@
                 </th>
               </thead>
               <tbody>
-                <tr *ngFor="let user of allusers">
+                <tr *ngFor="let user of allusers" (click)="DetailsUser(user.id)">
                   <td>
                   {{user.userFName}}
                   </td>

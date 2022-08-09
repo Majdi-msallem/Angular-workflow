@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddUserComponent } from './add-user/add-user.component';
 import { ListUsersComponent } from './list-users/list-users.component';
 import { ProfilUserComponent } from './profil-user/profil-user.component';
+import { DetailsUserComponent } from './details-user/details-user.component';
 
 
 
@@ -15,7 +16,8 @@ import { ProfilUserComponent } from './profil-user/profil-user.component';
   declarations: [
     AddUserComponent,
     ListUsersComponent,
-    ProfilUserComponent
+    ProfilUserComponent,
+    DetailsUserComponent
     ],
   imports: [
     CommonModule,

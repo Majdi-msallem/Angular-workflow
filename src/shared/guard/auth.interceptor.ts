@@ -30,20 +30,29 @@ export class AuthInterceptor implements HttpInterceptor{
         }
        
         return next.handle(req).pipe(
-            catchError(
-                (err:HttpErrorResponse) => {
-                    console.log(err.status);
-                    if(err.status === 401){
-                        this.router.navigate(['/login']);
-                    }else if (err.status === 403){
-                       this.router.navigate(['/login']);
-                    }
-                    throwError("Some thing is wrong when you want to login.....")
-                    return throwError(err.message || err);
+            catchError((err) => {
+                if (err instanceof HttpErrorResponse) {
+                    if (err.status === 401) {
+                   this.userAuthService.clear();  
+                   this.router.navigate(['/login'])
+                 }
+              }
+              return throwError(err);
+            })
+            // catchError(
+            //     (err:HttpErrorResponse) => {
+            //         console.log(err.status);
+            //         if(err.status === 401){
+            //             this.router.navigate(['/login']);
+            //         }else if (err.status === 403){
+            //            this.router.navigate(['/login']);
+            //         }
+            //         throwError("Some thing is wrong when you want to login.....")
+            //         return throwError(err.message || err);
 
 
-                }
-            )
+            //     }
+            // )
         );
     }
 

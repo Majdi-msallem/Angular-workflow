@@ -1,3 +1,4 @@
+import { DetailsUserComponent } from './details-user/details-user.component';
 import { ProfilUserComponent } from './profil-user/profil-user.component';
 import { ListUsersComponent } from './list-users/list-users.component';
 import { CommonModule } from '@angular/common';
@@ -14,7 +15,9 @@ const routes: Routes = [
   },
   {path:'add',component:AddUserComponent},
   {path:'list-u',component:ListUsersComponent},
-  {path:'profil-u',component:ProfilUserComponent}
+  {path:'profil-u',component:ProfilUserComponent},
+  {path:'details/:id',component:DetailsUserComponent}
+
 
 
 ];

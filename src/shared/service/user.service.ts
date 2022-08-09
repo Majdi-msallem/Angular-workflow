@@ -64,6 +64,9 @@ export class UserService {
   getuser() :Observable<userModel> {
     return this.httpclient.get<userModel>(this.url+'/getuser');
   }
+  getuserbyId(id:number): Observable<userModel>{
+    return this.httpclient.get<userModel>(this.url+"/getuserById/"+id)
+  }
   getalluser(o:any):Observable<userModel>{
     const params = new HttpParams()
   .set('page', o.page)
@@ -78,5 +81,8 @@ export class UserService {
     return this.httpclient.delete<any>(this.url+ "/deleteUser/"+id).pipe(map((res:any)=>{
       return res ;
     }))
+  }
+  updateUser(user:any){
+    return this.httpclient.put<any>(this.url+ "/updateuser",user);
   }
 }
