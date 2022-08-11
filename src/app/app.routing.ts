@@ -8,6 +8,7 @@ import { NotfoundComponent } from 'shared/components/notfound/notfound.component
 import { PageComponent } from './Page/page.component';
 import { AuthGuard } from 'shared/guard/auth.guard';
 import { LoginGuard } from 'shared/guard/login.guard.spec';
+import { VerifyEmailComponent } from './verify-email/verify-email.component'
 
 const routes: Routes =[
   {
@@ -21,6 +22,7 @@ const routes: Routes =[
     canActivate:[LoginGuard] 
     
   },
+ 
   {
     path: 'admin',
     component: AdminLayoutComponent,
@@ -40,7 +42,7 @@ const routes: Routes =[
       loadChildren: () => import('./Page/page.module').then(x=>x.PageModule),
 
   }]},
- 
+      {path:'verify',component:VerifyEmailComponent},
   {
     path: '**',
     component: NotfoundComponent

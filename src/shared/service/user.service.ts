@@ -85,4 +85,12 @@ export class UserService {
   updateUser(user:any){
     return this.httpclient.put<any>(this.url+ "/updateuser",user);
   }
+  verifierCompte(o:any):Observable<userModel>{
+    console.log("pppp",o.code)
+    const  params = new HttpParams()
+    .set('code',o.code)
+    return this.httpclient.get<userModel>(this.url+'/verify',{params})
+      }
 }
+
+

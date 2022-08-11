@@ -46,7 +46,12 @@ export class LoginComponent implements OnInit {
         this.userAuthService.setToken(response.jwtToken);
 
        const role=  response.user.role[0].roleName;
-       if(response.user.enabled==1){
+       if(response.user.enabled==0){
+              
+         alert("vous devez activer votre compte par email")
+
+
+       }else{
         if(role=='d_rh'){
           this.router.navigate(['/admin/dashboard'])
          }else if (role =='rh'){
@@ -56,9 +61,6 @@ export class LoginComponent implements OnInit {
          }
          this.toastr.showNotification("top","right",2,"connexion"," avec succès",".......")
 
-       }else{
-        //this.router.navigate(['/admin/dashboard'])
-        alert("vous devez activez votre compte par email")
        }
       
       },

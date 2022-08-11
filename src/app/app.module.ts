@@ -18,6 +18,7 @@ import { PageComponent } from './Page/page.component';
 import { AuthGuard } from 'shared/guard/auth.guard';
 import { AuthInterceptor } from 'shared/guard/auth.interceptor';
 import { UserService } from 'shared/service/user.service';
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -30,6 +31,8 @@ import { UserService } from 'shared/service/user.service';
     ComponentsModule,
     MatSelectModule,
     NgbModule,
+    
+    
 
 
     
@@ -38,7 +41,9 @@ import { UserService } from 'shared/service/user.service';
     AppComponent,
     AdminLayoutComponent,
     LoginComponent,
-    PageComponent
+    PageComponent,
+    VerifyEmailComponent
+
 
   ],
   providers: [
