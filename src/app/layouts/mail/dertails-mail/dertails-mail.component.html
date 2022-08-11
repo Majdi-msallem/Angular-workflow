@@ -1,7 +1,7 @@
+<div class="panel-header panel-header-sm" >
+</div>
 <link rel="stylesheet" href="//cdn.materialdesignicons.com/3.7.95/css/materialdesignicons.min.css">
 <div class="main-content">
-
-
     <div class="row">
 <div class="col-md-12">
           <div class="email-wrapper wrapper">
@@ -120,6 +120,12 @@
               <label> Note</label>
               <textarea   ngModel name="note" #note="ngModel"
               class="form-control" style="border:1px solid grey;border-radius: 5px;" id="exampleFormControlTextarea1" rows="6"></textarea>
+              <div *ngIf="note.invalid && (note.dirty || note.touched)"
+              class="alert-danger">
+                <div *ngIf="note.errors?.required">
+               note non valide
+                </div>
+              </div>
             </div>
           </div>
           <div class="col-md-6 pr-1">
@@ -128,7 +134,12 @@
              <select  ngModel  #etat="ngModel" name="etat"    id="dropdownOption" class='form-control'>       
               <option value="accepter">Accepter</option>
               <option value="refuser">Refuser</option>
-  
+              <div *ngIf="etat.invalid && (etat.dirty || etat.touched)"
+              class="alert-danger">
+                <div *ngIf="etat.errors?.required">
+                  etat non valide
+                </div>
+              </div>
               </select>
           </div>
          
@@ -136,10 +147,10 @@
         </div>
         <hr>
         <div class="button-container">
-          <button href="#" class="btn btn-primary" (click)="accpetedTechTr(Formtech)">
+          <button href="#" [disabled]="!Formtech.valid" class="btn btn-primary" (click)="accpetedTechTr(Formtech)">
             accepter
         </button>
-        <button href="#" class="btn btn-danger" (click)="refusedTechTr(Formtech)">
+        <button href="#"  [disabled]="!Formtech.valid" class="btn btn-danger" (click)="refusedTechTr(Formtech)">
             refuser
         </button>
         </div>
@@ -174,33 +185,56 @@
                  <select   ngModel  #etat="ngModel" name="etat" id="etat" class='form-control'>       
                   <option value="accepter">Accepter</option>
                   <option value="refuser">Refuser</option>
+                  <div *ngIf="etat.invalid && (etat.dirty || etat.touched)"
+                class="alert-danger">
+                  <div *ngIf="etat.errors?.required">
+                    etat non valide
+                  </div>
+                </div>
                   </select>
               </div>
               <div class="form-group" >
                 <label> Note</label>
                 <textarea  ngModel name="note" #note="ngModel"
                 class="form-control" style="border:1px solid grey;border-radius: 5px;" id="exampleFormControlTextarea1" rows="6"></textarea>
+                <div *ngIf="note.invalid && (note.dirty || note.touched)"
+                class="alert-danger">
+                  <div *ngIf="note.errors?.required">
+                 note non valide
+                  </div>
+                </div>
               </div>
               <div class="form-group" *ngIf="Formrh?.value?.etat=='accepter'">
                 <label  >tech liste</label>
              <select [(ngModel)]="userName"     name="userName" id="dropdownOption" class='form-control'>       
               <option *ngFor="let tu of listusertech">{{tu.userName}}</option>
-              
+              <div *ngIf="userName.invalid && (userName.dirty || userName.touched)"
+              class="alert-danger">
+                <div *ngIf="userName.errors?.required">
+                        selectionner un nom
+                </div>
+              </div>
               </select>
           </div>
           <div class="form-group" *ngIf="Formrh?.value?.userName!=null && Formrh?.value?.etat=='accepter'">
             <label> lien meet </label>
             <textarea   name="meet" #meet="ngModel" ngModel 
             class="form-control" style="border:1px solid grey;border-radius: 5px;" id="exampleFormControlTextarea1" rows="6"></textarea>
-          </div>
+            <div *ngIf="meet.invalid && (meet.dirty || meet.touched)"
+            class="alert-danger">
+              <div *ngIf="meet.errors?.required">
+             meet non valide
+              </div>
+            </div>
+         </div>
               </div>
             </div>
             <hr>
             <div class="button-container">
-              <button href="#"  class="btn btn-primary" (click)="accpettr(Formrh)">
+              <button href="#"   [disabled]="!Formrh.valid"  class="btn btn-primary" (click)="accpettr(Formrh)">
                 accepter
             </button>
-            <button href="#" class="btn btn-danger" (click)="refusertr(Formrh)">
+            <button href="#"  [disabled]="!Formrh.valid" class="btn btn-danger" (click)="refusertr(Formrh)">
                 refuser
             </button>
             </div>
@@ -240,6 +274,12 @@
                     <label> Note</label>
                     <textarea ngModel  #note="ngModel" name="note" required 
                     class="form-control" style="border:1px solid grey;border-radius: 5px;" id="exampleFormControlTextarea1" rows="6"></textarea>
+                    <div *ngIf="note.invalid && (note.dirty || note.touched)"
+                    class="alert-danger">
+                      <div *ngIf="note.errors?.required">
+                      note non valide
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div class="col-md-8 pr-1">
@@ -249,16 +289,22 @@
                      id="dropdownOption" class='form-control'>       
                     <option value="accepter">Accepter</option>
                     <option value="refuser">Refuser</option>
+                    <div *ngIf="etat.invalid && (etat.dirty || etat.touched)"
+                    class="alert-danger">
+                      <div *ngIf="etat.errors?.required">
+                     etat non valide
+                      </div>
+                    </div>
                     </select>
                 </div>
                 </div>
               </div>
               <hr>
               <div class="button-container">
-                <button href="#" class="btn btn-primary" (click)="accpeteddrhTr(Formdrh)">
+                <button href="#"  [disabled]="!Formdrh.valid" class="btn btn-primary" (click)="accpeteddrhTr(Formdrh)">
                   accepter
               </button>
-              <button href="#" class="btn btn-danger" (click)="refuseddrhTr(Formdrh)">
+              <button href="#" class="btn btn-danger"  [disabled]="!Formdrh.valid" (click)="refuseddrhTr(Formdrh)">
                   refuser
               </button>
               </div>

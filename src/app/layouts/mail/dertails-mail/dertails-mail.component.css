@@ -2,6 +2,11 @@ body{
     margin-top:20px;
     background: #eee;
 }
+.alert-danger{
+  color:red;
+  font-size: 15px;
+  background-color: transparent;
+}
 div span{
   font-size: 15px;
 }

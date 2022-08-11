@@ -25,6 +25,7 @@ export class ListMailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    
     this.getAllMail({ page: 0, size: 5,recherche:this.key });
     
   }

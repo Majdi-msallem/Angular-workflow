@@ -2,73 +2,40 @@
 </div>
 <div class="main-content">
   <div class="row">
-    <div class="col-md-12">
-      <div class="card">
-        <div class="card-header">
-          <h2 class="title">Modifier Votre profile</h2>
+    
+    <div class="col-md-6 ">
+      <div class="card card-user">
+        <div class="image">
+          <img src="../assets/img/bg5.jpg" alt="...">
         </div>
         <div class="card-body">
-          <form>
-
-            <div class="row">
-              <div class="col-md-5 pr-1">
-                <div class="form-group">
-                  <label>First Name</label>
-                  <input type="text" class="form-control" placeholder="Company" value={{user.userFName}}>
-                </div>
-              </div>
-              <div class="col-md-5 pl-1">
-                <div class="form-group">
-                  <label>Last Name</label>
-                  <input type="text" class="form-control" placeholder="Last Name" value={{user.userLName}}>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-3 px-" >
-                <div class="form-group">
-                  <label>Username</label>
-                  <input type="text" class="form-control" placeholder="Username" value={{user.userName}}>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-4 pl-1">
-                <div class="form-group">
-                  <label for="email">Email address</label>
-                  <input name="email" id="email" type="email" class="form-control" placeholder="Email" value={{user.email}}>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-4 pr-1">
-                <div class="form-group">
-                  <label>City</label>
-                  <input type="text" class="form-control" placeholder="City" value="Mike">
-                </div>
-              </div>
-              <div class="col-md-4 px-1">
-                <div class="form-group">
-                  <label>Country</label>
-                  <input type="text" class="form-control" placeholder="Country" value="Andrew">
-                </div>
-              </div>
-             
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-               
-                <button class="btn btn-info">
-                    Modifier
-                </button>
-              </div>
-            </div>
-          </form>
+          <div class="author">
+            <a href="#">
+              <img class="avatar border-gray" src="../assets/img/u.jpg" alt="...">
+              <h5 class="title">{{user?.userName}}</h5>
+            </a>
+            <p class="description">
+                {{user?.role[0].roleName}}
+            </p>
+          </div>
+          <p class="description text-center">
+            "{{user?.userFName}}
+            <br> {{user?.userLName}}
+            <br> {{user?.email}}
+          </p>
+        </div>
+        <hr>
+        <div class="button-container">
+          <!-- <button  class="btn btn-neutral   btn-lg" >
+            Modifier Profile
+          </button> -->
         </div>
       </div>
     </div>
-   
-  </div>
-</div>
 
+
+         
+  </div>
+ </div>
+   
   

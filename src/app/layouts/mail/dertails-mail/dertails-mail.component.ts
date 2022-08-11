@@ -71,10 +71,8 @@ refusertr(form:NgForm){
   //console.log("taba3 khlifa",form.value)
  this.traitementService.refusedRhTr(this.idMail,2,form.value.note,form.value.etat,this.userName,this.meet).subscribe(
   res=>{
-    form.resetForm
-  }
+      }
  );
- form.resetForm
 }
 accpettr(form:NgForm){
    //console.log("taba3 khlifa",form.value)
@@ -82,11 +80,11 @@ accpettr(form:NgForm){
   this.traitementService.accpetedRhTr(this.idMail,1,form.value.note,form.value.etat,form.value.userName,form.value.meet).subscribe(
     res=>{
       this.toastr.showNotification("top","right",2,"traitement Rh ","traité avec succees",".......")   
-     // Formdrh.disabled;
-    }  
+          }  
   );
   }else{
     this.toastr.showNotification("top","right",3,"erreur:","verifier vos champs",".......")
+    form.resetForm();
 
   }
  
@@ -105,11 +103,11 @@ accpetedTechTr(Formtech:NgForm){
   this.traitementService.accpetedTechTr(this.idMail,Formtech.value.note,Formtech.value.etat).subscribe(
     res=>{
       this.toastr.showNotification("top","right",2,"traitement technique ","traité avec succees",".......")   
-     // Formdrh.disabled;
-    }  
+         }  
   );
   }else{
     this.toastr.showNotification("top","right",3,"erreur:","verifier vos champs",".......")
+    Formtech.resetForm();
 
   }
 }
@@ -118,10 +116,12 @@ refusedTechTr(Formtech:NgForm){
   this.traitementService.accpetedTechTr(this.idMail,Formtech.value.note,Formtech.value.etat).subscribe(
     res=>{
       this.toastr.showNotification("top","right",2,"traitement technique ","traité avec succees",".......")   
+      
     }  
   );
   }else{
     this.toastr.showNotification("top","right",3,"erreur:","verifier vos champs",".......")
+    Formtech.resetForm();
 
   }
 }
@@ -132,11 +132,12 @@ accpeteddrhTr(Formdrh:NgForm){
   this.traitementService.accpeteddrhTr(this.idMail,2,Formdrh.value.note,Formdrh.value.etat).subscribe(
     res=>{
       this.toastr.showNotification("top","right",2,"traitement final ","traité avec succees",".......")   
-     // Formdrh.disabled;
+     
     }  
   );
   }else{
     this.toastr.showNotification("top","right",3,"erreur:","verifier vos champs",".......")
+    Formdrh.resetForm();
 
   }
 }
@@ -145,11 +146,11 @@ refuseddrhTr(Formdrh:NgForm){
   this.traitementService.accpeteddrhTr(this.idMail,1,Formdrh.value.note,Formdrh.value.etat).subscribe(
     res=>{
       this.toastr.showNotification("top","right",2,"traitement final ","traité avec succees",".......")   
-     // Formdrh.disabled;
+      
     }   
   );}else{
     this.toastr.showNotification("top","right",3,"erreur:","verifier vos champs",".......")
-
+      Formdrh.resetForm();
   }
 }
   testrole(){

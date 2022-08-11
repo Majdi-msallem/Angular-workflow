@@ -1,0 +1,11 @@
+.alert-danger{
+    color:red;
+    font-size: 10px;
+    background-color: transparent;
+}
+input{
+    font-size: 15px;
+}
+button{
+    background-color: rgba(0, 0, 255, 0.839);
+}

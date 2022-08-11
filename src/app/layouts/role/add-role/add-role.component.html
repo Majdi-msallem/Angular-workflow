@@ -6,7 +6,7 @@
     <div class="col-md-8">
       <div class="card">
         <div class="card-header">
-          <h5 class="title">Ajouter Nouveau Role</h5>
+          <h2 class="title">Ajouter Nouveau Role</h2>
         </div>
         <div class="card-body">
           <form [formGroup]="formValue">
@@ -17,19 +17,31 @@
                   <label>Nom du role</label>
                   <input type="text" 
                   formControlName="roleName"
-                  class="form-control" placeholder="nom du role " value="">
+                  class="form-control" placeholder="nom du role " >
+                  <div *ngIf="f.roleName.invalid && (f.roleName.dirty || f.roleName.touched)"
+                class="alert-danger">
+                  <div *ngIf="f.roleName.errors?.required">
+                    Nom de role non valide
+                  </div>
+                </div>
                 </div>
               </div>
               
             </div>
            
             <div class="row">
-              <div class="col-md-12">
+              <div class="col-md-8">
                 <div class="form-group">
                   <label>Description de role</label>
                   <input type="text" 
                   formControlName="roleDescription"
-                  class="form-control" placeholder="description de role....." value="">
+                  class="form-control" placeholder="description de role.....">
+                  <div *ngIf="f.roleName.invalid && (f.roleName.dirty || f.roleName.touched)"
+                class="alert-danger">
+                  <div *ngIf="f.roleName.errors?.required">
+                  description de role non valide
+                  </div>
+                </div>
                 </div>
               </div>
             </div>
@@ -41,7 +53,7 @@
                 </div>
               </div>
             </div>
-            <button type="button" (click)="ajouterNouveauRole()"   class="btn btn-primary right">Ajouetr</button>
+            <button type="button" (click)="ajouterNouveauRole()"  [disabled]="formValue.invalid" class="btn btn-primary right">Ajouetr</button>
           </form>
         </div>
       </div>

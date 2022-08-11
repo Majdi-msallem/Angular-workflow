@@ -2,10 +2,10 @@
 </div>
 <div class="main-content">
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-10">
       <div class="card">
         <div class="card-header">
-          <h5 class="title">Ajouter Nouveau utilisateur</h5>
+          <h2 class="title">Ajouter Nouveau utilisateur</h2>
         </div>
         <div class="card-body">
           <form  [formGroup]="userForm">
@@ -13,60 +13,99 @@
              
               <div class="col-md-3 px-1">
                 <div class="form-group">
-                  <label>userName</label>
+                  <label>Nom d'utilisateur</label>
                   <input type="text" 
                   formControlName="userName" 
-                  class="form-control" placeholder="nom du role " value="">
+                  class="form-control" placeholder="Nom d utilisateur " value="">
+                </div>
+                <div *ngIf="f.userName.invalid && (f.userName.dirty || f.userName.touched)"
+                class="alert-danger">
+                  <div *ngIf="f.userName.errors?.required">
+                    Nom d'utilisateur invalid
+                  </div>
                 </div>
               </div>
               <div class="col-md-3 px-1">
                 <div class="form-group">
-                  <label>userFName</label>
+                  <label>Nom</label>
                   <input type="text" 
-                  formControlName="userFName" 
-                  class="form-control" placeholder="nom du role " value="">
+                  formControlName="userFName"
+                  class="form-control" placeholder="Nom " value="">
+                  <div *ngIf="f.userFName.invalid && (f.userFName.dirty || f.userFName.touched)"
+                   class="alert-danger">
+                    <div *ngIf="f.userFName.errors?.required">
+                      Nom invalid
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div class="col-md-3 px-1">
-                <div class="form-group">
-                  <label>userLName</label>
-                  <input type="text" class="form-control"
-                  formControlName="userLName" 
-                   placeholder="nom du role " value="">
+           
+           
+                
+            <div class="col-md-3 px-1">
+              <div class="form-group">
+                <label>Prenom</label>
+                <input type="text" class="form-control"
+                formControlName="userLName" 
+                 placeholder="Prenom " value="">
+                 <div *ngIf="f.userLName.invalid && (f.userLName.dirty || f.userLName.touched)"
+                 class="alert-danger">
+                  <div *ngIf="f.userLName.errors?.required">
+                    Prenom invalid
+                  </div>
                 </div>
               </div>
-              <div class="col-md-3 px-1">
-                <div class="form-group">
-                  <label>email</label>
-                  <input type="text"
-                  formControlName="email"
-                  class="form-control" placeholder="nom du role " value="">
-                </div>
-              </div>
-              <div class="col-md-3 px-1">
-                <div class="form-group">
-                  <label>Password</label>
-                  <input type="text"
-                  formControlName="password" 
-                  class="form-control" placeholder="nom du role " value="">
-                </div>
-              </div>
-              <div class="col-6 " >
-                <label>Role</label>
-                <ng-multiselect-dropdown 
-                [placeholder]="'choisir role'"
-                [settings]="dropdownSettings"
-                [data]="Listrole"
-                formControlName="role"        >
-                </ng-multiselect-dropdown>
-          
             </div>
+            <div class="col-md-3 px-1">
+              <div class="form-group">
+                <label>email</label>
+                <input type="text"
+                formControlName="email" 
+                class="form-control" placeholder="Email " value="">
+                <div *ngIf="f.email.invalid && (f.email.dirty || f.email.touched)"
+                class="alert-danger">
+                 <div *ngIf="f.email.errors?.required">
+                   email invalid
+                 </div>
+                 <div *ngIf="f.email.errors?.email">
+                 verifier l'adresse email
+                </div>
+               </div>
+              </div>
+            </div>
+            
+           
+              <div class="col-md-3 px-1">
+                <div class="form-group">
+                  <label>Mot de Passe </label>
+                  <input type="password"
+                  formControlName="password"  
+                  class="form-control" placeholder="saisir votre mot de passe... " value="">
+                  <div *ngIf="f.password.invalid && (f.password.dirty || f.password.touched)"
+                   class="alert-danger">
+                    <div *ngIf="f.password.errors?.required">
+                      mot de passe invalid
+                    </div>
+                  </div>
+                </div>
+              </div>
+             
               
             </div>
            
             <div class="row">
-              <div class="col-md-12">
+              <div class="col-md-10">
                 <div class="form-group">
+                  <div class="col-6 " >
+                    <label>Role</label>
+                    <ng-multiselect-dropdown 
+                    [placeholder]="'choisir role'"
+                    [settings]="dropdownSettings"
+                    [data]="Listrole"
+                    formControlName="role"        >
+                    </ng-multiselect-dropdown>
+                      
+                </div>
                 </div>
               </div>
             </div>
@@ -78,7 +117,7 @@
                 </div>
               </div>
             </div>
-            <button (click)="addUser()"  class="btn btn-primary right">Ajouetr</button>
+            <button (click)="addUser()" [disabled]="userForm.invalid"  class="btn btn-primary right">Ajouter</button>
           </form>
         </div>
       </div>

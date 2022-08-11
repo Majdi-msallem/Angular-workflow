@@ -26,7 +26,9 @@ export class AddRoleComponent implements OnInit {
       roleDescription:['',Validators.required]
     })
   }
-
+  get f(){
+    return this.formValue.controls;
+  }
   ajouterNouveauRole(){
     this.Role.roleName=this.formValue.value.roleName;
     this.Role.roleDescription=this.formValue.value.roleDescription;

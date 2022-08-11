@@ -49,6 +49,10 @@ export class AddUserComponent implements OnInit {
   
   }
 
+  get f(){
+    return this.userForm.controls;
+  }
+
   addUser(){
   if(this.userForm.valid)    {
     this.userService.adduser(this.userForm.value).subscribe(
