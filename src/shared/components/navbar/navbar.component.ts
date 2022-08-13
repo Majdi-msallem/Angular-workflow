@@ -163,7 +163,7 @@ export class NavbarComponent implements OnInit {
   
     public logout(){
       this.userAuthService.clear();
-      this.Router.navigate(['/login'])
+      this.Router.navigate(['/auth/log'])
     }
     public profil(){
       this.Router.navigate(['/admin/user/profil-u'])

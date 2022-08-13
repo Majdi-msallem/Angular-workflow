@@ -1,3 +1,4 @@
+import { AuthComponent } from './auth/auth.component';
 import { NgModule } from '@angular/core';
 import { CommonModule, } from '@angular/common';
 import { BrowserModule  } from '@angular/platform-browser';
@@ -8,20 +9,29 @@ import { NotfoundComponent } from 'shared/components/notfound/notfound.component
 import { PageComponent } from './Page/page.component';
 import { AuthGuard } from 'shared/guard/auth.guard';
 import { LoginGuard } from 'shared/guard/login.guard.spec';
-import { VerifyEmailComponent } from './verify-email/verify-email.component'
+import { VerifyEmailComponent } from './auth/verify-email/verify-email.component'
 
 const routes: Routes =[
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'auth',
     pathMatch: 'full',
   }, 
-  {
-    path: 'login',
-    component: LoginComponent,
-    canActivate:[LoginGuard] 
+  // {
+  //   path: 'login',
+  //   component: LoginComponent,
+  //   canActivate:[LoginGuard] 
     
-  },
+  // },
+  {
+    path: 'auth',
+    component: AuthComponent,
+    children: [
+      {
+    path: '',
+    loadChildren: () => import('./auth/auth.module').then(x=>x.AuthModule),
+    //canActivate:[LoginGuard] 
+  }]},
  
   {
     path: 'admin',
@@ -42,7 +52,6 @@ const routes: Routes =[
       loadChildren: () => import('./Page/page.module').then(x=>x.PageModule),
 
   }]},
-      {path:'verify',component:VerifyEmailComponent},
   {
     path: '**',
     component: NotfoundComponent

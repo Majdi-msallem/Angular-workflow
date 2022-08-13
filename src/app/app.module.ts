@@ -1,3 +1,4 @@
+import { AuthComponent } from './auth/auth.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -18,7 +19,6 @@ import { PageComponent } from './Page/page.component';
 import { AuthGuard } from 'shared/guard/auth.guard';
 import { AuthInterceptor } from 'shared/guard/auth.interceptor';
 import { UserService } from 'shared/service/user.service';
-import { VerifyEmailComponent } from './verify-email/verify-email.component';
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -42,7 +42,7 @@ import { VerifyEmailComponent } from './verify-email/verify-email.component';
     AdminLayoutComponent,
     LoginComponent,
     PageComponent,
-    VerifyEmailComponent
+    AuthComponent
 
 
   ],

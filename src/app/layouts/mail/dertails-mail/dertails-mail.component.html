@@ -208,13 +208,8 @@
                 <label  >tech liste</label>
              <select [(ngModel)]="userName"     name="userName" id="dropdownOption" class='form-control'>       
               <option *ngFor="let tu of listusertech">{{tu.userName}}</option>
-              <div *ngIf="userName.invalid && (userName.dirty || userName.touched)"
-              class="alert-danger">
-                <div *ngIf="userName.errors?.required">
-                        selectionner un nom
-                </div>
-              </div>
               </select>
+             
           </div>
           <div class="form-group" *ngIf="Formrh?.value?.userName!=null && Formrh?.value?.etat=='accepter'">
             <label> lien meet </label>

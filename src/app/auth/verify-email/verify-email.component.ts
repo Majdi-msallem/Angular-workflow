@@ -10,6 +10,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VerifyEmailComponent implements OnInit {
   code:any
+  data : Date = new Date();
+  focus;
+  focus1;
   constructor(private userService:UserService,
     private activatedRoute:ActivatedRoute) { }
 ver:any
@@ -25,7 +28,6 @@ ver:any
   //this.ver=res
  console.log("verification",res)
 })
-
   //}
   //verifyemail(code){this.activatedRoute.queryParamMap.subscribe(x => {
   //let code = x.get('code');

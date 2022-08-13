@@ -2,7 +2,7 @@ import { UserService } from 'shared/service/user.service';
 import { TraitementService } from './../../../../shared/service/traitementService/traitement.service';
 import { MailService } from './../../../../shared/service/mailService/mail.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
 import { myToastrService } from 'shared/service/toastr/toastr.service';
@@ -132,7 +132,7 @@ accpeteddrhTr(Formdrh:NgForm){
   this.traitementService.accpeteddrhTr(this.idMail,2,Formdrh.value.note,Formdrh.value.etat).subscribe(
     res=>{
       this.toastr.showNotification("top","right",2,"traitement final ","traité avec succees",".......")   
-     
+      this.showdettr=false
     }  
   );
   }else{
@@ -146,12 +146,14 @@ refuseddrhTr(Formdrh:NgForm){
   this.traitementService.accpeteddrhTr(this.idMail,1,Formdrh.value.note,Formdrh.value.etat).subscribe(
     res=>{
       this.toastr.showNotification("top","right",2,"traitement final ","traité avec succees",".......")   
-      
+      this.showdettr=false
     }   
+    
   );}else{
     this.toastr.showNotification("top","right",3,"erreur:","verifier vos champs",".......")
       Formdrh.resetForm();
   }
+  
 }
   testrole(){
     this.userservice.getuser().subscribe(

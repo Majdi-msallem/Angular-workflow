@@ -91,6 +91,14 @@ export class UserService {
     .set('code',o.code)
     return this.httpclient.get<userModel>(this.url+'/verify',{params})
       }
+     
+   sendEmailForResetPassword(o:any){
+    //console.log("serv",o.email)
+    const  params = new HttpParams()
+    .set('email',o.email)
+    //console.log("par",o.email)
+    return this.httpclient.get(this.url+'/forgetpassword',{params});
+   }
 }
 
 
