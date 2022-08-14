@@ -75,6 +75,7 @@ refusertr(form:NgForm){
  );
 }
 accpettr(form:NgForm){
+  //console.log("name mte3k",form.value.userName)
    //console.log("taba3 khlifa",form.value)
    if(form.valid)    {
   this.traitementService.accpetedRhTr(this.idMail,1,form.value.note,form.value.etat,form.value.userName,form.value.meet).subscribe(

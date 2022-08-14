@@ -30,7 +30,7 @@ const routes: Routes =[
       {
     path: '',
     loadChildren: () => import('./auth/auth.module').then(x=>x.AuthModule),
-    //canActivate:[LoginGuard] 
+    canActivate:[LoginGuard] 
   }]},
  
   {

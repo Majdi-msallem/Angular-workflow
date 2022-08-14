@@ -93,12 +93,13 @@ export class UserService {
       }
      
    sendEmailForResetPassword(o:any){
-    //console.log("serv",o.email)
     const  params = new HttpParams()
     .set('email',o.email)
-    //console.log("par",o.email)
     return this.httpclient.get(this.url+'/forgetpassword',{params});
    }
+  Resetpassword(token:any,Password:any){
+    return this.httpclient.get(this.url+'/resetpassword/'+ token+'/'+Password);
+  }
 }
 
 

@@ -184,20 +184,20 @@
                     <label>Etat</label>
                  <select   ngModel  #etat="ngModel" name="etat" id="etat" class='form-control'>       
                   <option value="accepter">Accepter</option>
-                  <option value="refuser">Refuser</option>
-                  <div *ngIf="etat.invalid && (etat.dirty || etat.touched)"
-                class="alert-danger">
-                  <div *ngIf="etat.errors?.required">
-                    etat non valide
-                  </div>
-                </div>
+                  <option value="refuser">Refuser</option>   
                   </select>
+                  <div *ngIf="etat.invalid && (etat.dirty || etat.touched)"
+                  class="alert-danger">
+                    <div *ngIf="etat.errors?.required">
+                      etat non valide
+                    </div>
+                  </div>
               </div>
               <div class="form-group" >
                 <label> Note</label>
                 <textarea  ngModel name="note" #note="ngModel"
                 class="form-control" style="border:1px solid grey;border-radius: 5px;" id="exampleFormControlTextarea1" rows="6"></textarea>
-                <div *ngIf="note.invalid && (note.dirty || note.touched)"
+                <div *ngIf="note.invalid &&  note.touched"
                 class="alert-danger">
                   <div *ngIf="note.errors?.required">
                  note non valide
@@ -209,7 +209,10 @@
              <select [(ngModel)]="userName"     name="userName" id="dropdownOption" class='form-control'>       
               <option *ngFor="let tu of listusertech">{{tu.userName}}</option>
               </select>
-             
+              <div *ngIf="userName===undefined"
+            class="alert-danger">
+             Name non valide
+            </div> 
           </div>
           <div class="form-group" *ngIf="Formrh?.value?.userName!=null && Formrh?.value?.etat=='accepter'">
             <label> lien meet </label>
