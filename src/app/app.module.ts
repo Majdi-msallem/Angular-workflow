@@ -12,7 +12,6 @@ import { AppRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
 
 import { AdminLayoutComponent } from './layouts/admin-layout.component';
-import { LoginComponent } from './login/login.component';
 import { ComponentsModule } from 'shared/components/components.module';
 import {MatSelectModule} from '@angular/material/select';
 import { PageComponent } from './Page/page.component';
@@ -40,7 +39,6 @@ import { UserService } from 'shared/service/user.service';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    LoginComponent,
     PageComponent,
     AuthComponent
 

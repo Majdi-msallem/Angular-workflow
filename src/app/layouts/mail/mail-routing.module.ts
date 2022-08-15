@@ -1,3 +1,4 @@
+import { RoleGuard } from './../../../shared/guard/roleguard';
 import { TechListMailComponent } from './tech-list-mail/tech-list-mail.component';
 import { ListeMailTraitementTechComponent } from './liste-mail-traitement-tech/liste-mail-traitement-tech.component';
 import { ListeMailTraitementRhComponent } from './liste-mail-traitement-rh/liste-mail-traitement-rh.component';
@@ -18,21 +19,28 @@ const routes: Routes = [
     redirectTo: 'list-m',
     pathMatch: 'full',
   },
-  {path:'list-m',component:ListMailComponent},
-  {path:'list-mc',component:MailEncoursComponent},
-  {path:'list-mt',component:MailTraiterComponent},
-  {path:'list-mnt',component:MailNontraiterComponent},
+  {path:'list-m',component:ListMailComponent,
+  canActivate:[RoleGuard],data:{role:['rh'||'d_rh']}},
 
-  {path:'list-tr1',component:ListeMailTraitementRhComponent},
-  {path:'list-tr2',component:ListeMailTraitementTechComponent},
+  {path:'list-mc',component:MailEncoursComponent,
+  canActivate:[RoleGuard],data:{role:['rh'||'d_rh']}},
 
+  {path:'list-mt',component:MailTraiterComponent,
+  canActivate:[RoleGuard],data:{role:['rh'||'d_rh']}},
 
+  {path:'list-mnt',component:MailNontraiterComponent,
+  canActivate:[RoleGuard],data:{role:['rh'||'d_rh']}},
 
+  {path:'list-tr1',component:ListeMailTraitementRhComponent,
+  canActivate:[RoleGuard],data:{role:['rh'||'d_rh']}},
 
+  {path:'list-tr2',component:ListeMailTraitementTechComponent,
+  canActivate:[RoleGuard],data:{role:['rh'||'d_rh']}},
 
   {path:'listMailsForRHconnected',component:FirstTraitementComponent},
   {path:'listMailsForTechconnected',component:SecondTraitementComponent},
-  {path:'listMailsForDRH',component:MailsDrhComponent},
+  {path:'listMailsForDRH',component:MailsDrhComponent,
+  canActivate:[RoleGuard],data:{role:['d_rh']}},
 
   {path:'details-m/:idMail',component:DertailsMailComponent},
 

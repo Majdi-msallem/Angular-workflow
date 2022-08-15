@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AddUserComponent } from './add-user/add-user.component';
 import { UsersComponent } from './users.component';
+import { RoleGuard } from 'shared/guard/roleguard';
 
 const routes: Routes = [
   {
@@ -13,8 +14,10 @@ const routes: Routes = [
     redirectTo: 'list-u',
     pathMatch: 'full',
   },
-  {path:'add',component:AddUserComponent},
-  {path:'list-u',component:ListUsersComponent},
+  {path:'add',component:AddUserComponent,
+  canActivate:[RoleGuard],data:{role:['d_rh']}},
+  {path:'list-u',component:ListUsersComponent,
+  canActivate:[RoleGuard],data:{role:['d_rh']}},
   {path:'profil-u',component:ProfilUserComponent},
   {path:'details/:id',component:DetailsUserComponent}
 
