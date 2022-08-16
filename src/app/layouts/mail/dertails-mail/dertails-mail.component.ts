@@ -71,7 +71,8 @@ refusertr(form:NgForm){
   //console.log("taba3 khlifa",form.value)
  this.traitementService.refusedRhTr(this.idMail,2,form.value.note,form.value.etat,this.userName,this.meet).subscribe(
   res=>{
-      }
+    this.router.navigateByUrl('admin/mail/list-m')
+  }
  );
 }
 accpettr(form:NgForm){
@@ -81,6 +82,8 @@ accpettr(form:NgForm){
   this.traitementService.accpetedRhTr(this.idMail,1,form.value.note,form.value.etat,form.value.userName,form.value.meet).subscribe(
     res=>{
       this.toastr.showNotification("top","right",2,"traitement Rh ","traité avec succees",".......")   
+      this.router.navigateByUrl('admin/mail/list-m')
+
           }  
   );
   }else{
@@ -89,7 +92,7 @@ accpettr(form:NgForm){
 
   }
  
-}
+} 
  userTechList(){
   this.userservice.getalltechuser().subscribe(res=>{
       this.listusertech=res
@@ -104,6 +107,7 @@ accpetedTechTr(Formtech:NgForm){
   this.traitementService.accpetedTechTr(this.idMail,Formtech.value.note,Formtech.value.etat).subscribe(
     res=>{
       this.toastr.showNotification("top","right",2,"traitement technique ","traité avec succees",".......")   
+      this.router.navigateByUrl('/admin/mail/techlistm')
          }  
   );
   }else{
@@ -117,7 +121,8 @@ refusedTechTr(Formtech:NgForm){
   this.traitementService.accpetedTechTr(this.idMail,Formtech.value.note,Formtech.value.etat).subscribe(
     res=>{
       this.toastr.showNotification("top","right",2,"traitement technique ","traité avec succees",".......")   
-      
+      this.router.navigateByUrl('/admin/mail/techlistm')
+
     }  
   );
   }else{
@@ -133,7 +138,8 @@ accpeteddrhTr(Formdrh:NgForm){
   this.traitementService.accpeteddrhTr(this.idMail,2,Formdrh.value.note,Formdrh.value.etat).subscribe(
     res=>{
       this.toastr.showNotification("top","right",2,"traitement final ","traité avec succees",".......")   
-      this.showdettr=false
+      this.router.navigateByUrl('admin/mail/listMailsForDRH')
+
     }  
   );
   }else{
@@ -148,6 +154,8 @@ refuseddrhTr(Formdrh:NgForm){
     res=>{
       this.toastr.showNotification("top","right",2,"traitement final ","traité avec succees",".......")   
       this.showdettr=false
+      this.router.navigateByUrl('admin/mail/listMailsForDRH')
+
     }   
     
   );}else{
