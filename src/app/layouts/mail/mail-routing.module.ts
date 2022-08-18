@@ -37,14 +37,17 @@ const routes: Routes = [
   {path:'list-tr2',component:ListeMailTraitementTechComponent,
   canActivate:[RoleGuard],data:{role:['rh'||'d_rh']}},
 
-  {path:'listMailsForRHconnected',component:FirstTraitementComponent},
-  {path:'listMailsForTechconnected',component:SecondTraitementComponent},
+  {path:'listMailsForRHconnected',component:FirstTraitementComponent,
+  canActivate:[RoleGuard],data:{role:'rh'}},
+  {path:'listMailsForTechconnected',component:SecondTraitementComponent,
+  canActivate:[RoleGuard],data:{role:'tech'}},
   {path:'listMailsForDRH',component:MailsDrhComponent,
-  canActivate:[RoleGuard],data:{role:['d_rh']}},
+  canActivate:[RoleGuard],data:{role:'d_rh'}},
 
   {path:'details-m/:idMail',component:DertailsMailComponent},
 
-  {path:'techlistm',component:TechListMailComponent}
+  {path:'techlistm',component:TechListMailComponent,
+  canActivate:[RoleGuard],data:{role:'tech'}}
 ];
 
 @NgModule({

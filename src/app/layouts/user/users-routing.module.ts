@@ -15,11 +15,12 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {path:'add',component:AddUserComponent,
-  canActivate:[RoleGuard],data:{role:['d_rh']}},
+  canActivate:[RoleGuard],data:{role:'d_rh'}},
   {path:'list-u',component:ListUsersComponent,
-  canActivate:[RoleGuard],data:{role:['d_rh']}},
+  canActivate:[RoleGuard],data:{role:'d_rh'}},
   {path:'profil-u',component:ProfilUserComponent},
-  {path:'details/:id',component:DetailsUserComponent}
+  {path:'details/:id',component:DetailsUserComponent,
+  canActivate:[RoleGuard],data:{role:'d_rh'}}
 
 
 
